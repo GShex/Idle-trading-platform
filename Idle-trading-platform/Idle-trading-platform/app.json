@@ -1,0 +1,42 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/chat/chat",
+    "pages/ucenter/index/index"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "HITsz闲置交易平台",
+    "navigationBarTextStyle": "black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "backgroundColor": "#fafafa",
+    "borderStyle": "white",
+    "selectedColor": "#AB956D",
+    "color": "#666",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/images/home.png",
+        "selectedIconPath": "static/images/home@selected.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/chat/chat",
+        "iconPath": "static/images/messages.png",
+        "selectedIconPath": "static/images/messages@selected.png",
+        "text": "消息"
+      },
+      {
+        "pagePath": "pages/ucenter/index/index",
+        "iconPath": "static/images/my.png",
+        "selectedIconPath": "static/images/my@selected.png",
+        "text": "个人"
+      }
+    ]
+  }
+}
