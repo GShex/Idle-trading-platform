@@ -1,5 +1,5 @@
 .chat-item{
-  width: 725rpx;
+  width: 750rpx;
   background: #ffffff;
   padding: 25rpx 25rpx 25rpx 0;
   border-bottom: solid 1px #ebebeb;
@@ -32,6 +32,7 @@
 .chat-item .chat-content .chat-source .lasttime{
   flex: 1;
   font-size: 22rpx;
+  padding: 0rpx 200rpx 0rpx 0rpx;
   float: right;
   vertical-align: text-bottom;
 }
@@ -41,3 +42,16 @@
   font-size: 26rpx;
   line-height: 34rpx;
 }
+
+
+/* .goods-item  .chat-source image{
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 5rpx;
+  box-shadow:rgba(0,0,0,0.15) 0 0 15rpx;
+  background:#FBFBFB;   
+  border:1rpx solid #ddd;
+  margin:0rpx auto;
+  margin-left: 0rpx;
+  padding:2rpx;
+} */

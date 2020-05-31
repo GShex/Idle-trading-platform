@@ -1,1 +1,75 @@
-/* pages/goodsManage/index/index.wxss */
+.goods-item{
+    width: 750rpx;
+    background: #ffffff;
+    padding: 20rpx 25rpx 20rpx 0;
+    border-bottom: solid 1px #ebebeb;
+  }
+  .goods-item  image{
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 5rpx;
+    box-shadow:rgba(0,0,0,0.15) 0 0 15rpx;
+    background:#FBFBFB;   
+    border:1rpx solid #ddd;
+    /* margin:0rpx auto;
+    margin-left: 0rpx; */
+    padding:2rpx;
+  }
+  .goods-item .avatar{
+    flex: 1;
+  }
+  .goods-item .goods-content{
+    flex: 4;
+    text-align: left;
+  }
+  .goods-item .goods-content text{
+    /*display: block;*/
+  }
+  .goods-item .goods-content .goods-source{
+    color: #818A8F;
+    font-size: 28rpx;
+    padding: 0rpx 0 8rpx 0;
+  }
+  .goods-item .goods-content .goods-source .goodsmate{
+    font-size: 34rpx;
+    color: #000000;
+    text-align: left;
+  }
+  .goods-item .goods-content .goods-source .lasttime{
+    flex: 1;
+    font-size: 22rpx;
+    float: right;
+    vertical-align: text-bottom;
+  }
+  .goods-item .goods-content .goods-source .status{
+    flex: 1;
+    color:#7b7b7b;
+    font-size: 22rpx;
+    float: right;
+    vertical-align: text-bottom;
+  }
+  .goods-item .goods-content .goods-txt{
+    display: block;
+    color: #7b7b7b;
+    font-size: 26rpx;
+    line-height: 34rpx;
+  }
+  .rectangle-click{
+    height: 100rpx;
+    width: 250rpx;
+    background-color: #ab956d;
+    border-radius:20rpx;
+    position: fixed;
+    bottom: 50rpx;
+    right: 50rpx;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9;
+  }
+  .rectangle-click navigator{
+    font-size: 35rpx;
+    max-width: 200rpx;
+    color: #fff;
+    text-align: center;
+  }

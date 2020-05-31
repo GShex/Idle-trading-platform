@@ -1,2 +1,35 @@
-<!--pages/goodsManage/index/index.wxml-->
-<text>pages/goodsManage/index/index.wxml</text>
+
+<view class="container goods">
+  <view class="goods-item flex-wrp">
+    <view class="avatar flex-item">
+      <image src="../../../static/images/ph.jpg"></image>
+    </view>
+    <view class="goods-content flex-item">
+      <view class="goods-source">
+        <text class="goodsmate">大学物理</text>
+        <text class="status">上架中</text>
+      </view>
+      <text class="goods-txt">大学物理教材 七成新</text>
+    </view>
+  </view>
+  <view class="goods-item flex-wrp">
+    <view class="avatar flex-item">
+      <image src="../../../static/images/gs.jpg"></image>
+    </view>
+    <view class="goods-content flex-item">
+      <view class="goods-source">
+        <text class="goodsmate">高等数学</text>
+        <text class="status">上架中</text>
+        
+      </view>
+      <text class="goods-txt">全新高等数学教材</text>
+      
+    </view>
+  </view>
+  <view class="rectangle-click">
+   <navigator url='/pages/addgoods/addgoods' >发布新商品</navigator >
+</view>
+
+</view>
+
+
