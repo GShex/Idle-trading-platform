@@ -1,0 +1,24 @@
+<view class="container">
+
+<view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove" wx:for="{{items}}" wx:key="">
+
+
+  <view class="goods-item flex-wrp">
+    <view class="avatar flex-item">
+      <image src="../../../static/images/gs.jpg"></image>
+    </view>
+    <view class="goods-content flex-item">
+      <view class="goods-source">
+        <text class="goodsmate">高等数学</text>
+        <text class="status">上架中</text>
+        
+      </view>
+      <text class="goods-txt">全新高等数学教材</text>
+      
+    </view>
+  </view>
+<view class="soldout" catchtap="del" data-index="{{index}}">下架</view>
+<view class="modify" catchtap="del" data-index="{{index}}">修改</view>
+</view>
+
+</view>

@@ -7,7 +7,8 @@
     "pages/notice/notice",
     "pages/about/about",
     "pages/search/search",
-    "pages/auth/login/login"
+    "pages/auth/login/login",
+    "pages/goodsManage/index2/index"
   ],
   "window": {
     "navigationBarBackgroundColor": "#FFFFFF",
@@ -36,7 +37,7 @@
         "text": "消息"
       },
       {
-        "pagePath": "pages/goodsManage/index/index",
+        "pagePath": "pages/goodsManage/index2/index",
         "iconPath": "static/images/good_manage.png",
         "selectedIconPath": "static/images/good_manage@selected.png",
         "text": "商品管理"
