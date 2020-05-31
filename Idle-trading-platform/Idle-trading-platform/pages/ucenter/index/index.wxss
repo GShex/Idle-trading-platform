@@ -91,15 +91,15 @@ page {
 
 .user_column {
   /* border: 1px solid black; */
-  height: 140rpx;
+  height: 300rpx;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .user_column_item {
-  width: 30%;
-  height: 140rpx;
+  width: 50%;
+  height: 300rpx;
   background: #fff;
   text-align: center;
   position: relative;
@@ -117,9 +117,9 @@ page {
 }
 
 .user_column_item_image {
-  width: 50rpx;
-  height: 50rpx;
-  margin-top: 30rpx;
+  width: 100rpx;
+  height: 100rpx;
+  margin-top: 80rpx;
 }
 
 .user_column_item_text {

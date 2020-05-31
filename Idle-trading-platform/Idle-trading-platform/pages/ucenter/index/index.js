@@ -1,7 +1,6 @@
-var util = require('../../../utils/util.js');
-var api = require('../../../config/api.js');
-var user = require('../../../utils/user.js');
-var app = getApp();
+//index.js
+//获取应用实例
+const app = getApp()
 
 Page({
   data: {
@@ -16,6 +15,12 @@ Page({
       uncomment: 0
     },
     hasLogin: false
+  },
+  //事件处理函数
+  bindViewTap: function() {
+    wx.navigateTo({
+      url: '../logs/logs'
+    })
   },
   onLoad: function(options) {
     // 页面初始化 options为页面跳转所带来的参数
@@ -58,7 +63,25 @@ Page({
       });
     }
   },
-  goOrder() {
+  getUserInfo: function(e) {
+    console.log(e)
+    app.globalData.userInfo = e.detail.userInfo
+    this.setData({
+      userInfo: e.detail.userInfo,
+      hasUserInfo: true
+    })
+  },
+  aboutUs: function() {
+    wx.navigateTo({
+      url: '/pages/about/about'
+    });
+  },
+  goHelp: function () {
+    wx.navigateTo({
+      url: '/pages/help/help'
+    });
+  },  
+  goSold() {
     if (this.data.hasLogin) {
       try {
         wx.setStorageSync('tab', 0);
@@ -74,39 +97,23 @@ Page({
       });
     }
   },
-  goOrderIndex(e) {
+  goBought() {
     if (this.data.hasLogin) {
-      let tab = e.currentTarget.dataset.index
-      let route = e.currentTarget.dataset.route
       try {
-        wx.setStorageSync('tab', tab);
+        wx.setStorageSync('tab', 0);
       } catch (e) {
 
       }
       wx.navigateTo({
-        url: route,
-        success: function(res) {},
-        fail: function(res) {},
-        complete: function(res) {},
-      })
-    } else {
-      wx.navigateTo({
-        url: "/pages/auth/login/login"
-      });
-    };
-  },
-  goCoupon() {
-    if (this.data.hasLogin) {
-      wx.navigateTo({
-        url: "/pages/ucenter/couponList/couponList"
+        url: "/pages/ucenter/order/order"
       });
     } else {
       wx.navigateTo({
         url: "/pages/auth/login/login"
       });
-    };
+    }
   },
-  goGroupon() {
+  goHistory() {
     if (this.data.hasLogin) {
       wx.navigateTo({
         url: "/pages/groupon/myGroupon/myGroupon"
@@ -120,7 +127,7 @@ Page({
   goCollect() {
     if (this.data.hasLogin) {
       wx.navigateTo({
-        url: "/pages/ucenter/collect/collect"
+        url: "/pages/groupon/myGroupon/myGroupon"
       });
     } else {
       wx.navigateTo({
@@ -128,107 +135,6 @@ Page({
       });
     };
   },
-  goFeedback(e) {
-    if (this.data.hasLogin) {
-      wx.navigateTo({
-        url: "/pages/ucenter/feedback/feedback"
-      });
-    } else {
-      wx.navigateTo({
-        url: "/pages/auth/login/login"
-      });
-    };
-  },
-  goFootprint() {
-    if (this.data.hasLogin) {
-      wx.navigateTo({
-        url: "/pages/ucenter/footprint/footprint"
-      });
-    } else {
-      wx.navigateTo({
-        url: "/pages/auth/login/login"
-      });
-    };
-  },
-  goAddress() {
-    if (this.data.hasLogin) {
-      wx.navigateTo({
-        url: "/pages/ucenter/address/address"
-      });
-    } else {
-      wx.navigateTo({
-        url: "/pages/auth/login/login"
-      });
-    };
-  },
-  bindPhoneNumber: function(e) {
-    if (e.detail.errMsg !== "getPhoneNumber:ok") {
-      // 拒绝授权
-      return;
-    }
 
-    if (!this.data.hasLogin) {
-      wx.showToast({
-        title: '绑定失败：请先登录',
-        icon: 'none',
-        duration: 2000
-      });
-      return;
-    }
-
-    util.request(api.AuthBindPhone, {
-      iv: e.detail.iv,
-      encryptedData: e.detail.encryptedData
-    }, 'POST').then(function(res) {
-      if (res.errno === 0) {
-        wx.showToast({
-          title: '绑定手机号码成功',
-          icon: 'success',
-          duration: 2000
-        });
-      }
-    });
-  },
-  goAfterSale: function() {
-    if (this.data.hasLogin) {
-      wx.navigateTo({
-        url: "/pages/ucenter/aftersaleList/aftersaleList"
-      });
-    } else {
-      wx.navigateTo({
-        url: "/pages/auth/login/login"
-      });
-    };
-  },
-  aboutUs: function() {
-    wx.navigateTo({
-      url: '/pages/about/about'
-    });
-  },
-  goHelp: function () {
-    wx.navigateTo({
-      url: '/pages/help/help'
-    });
-  },  
-  exitLogin: function() {
-    wx.showModal({
-      title: '',
-      confirmColor: '#b4282d',
-      content: '退出登录？',
-      success: function(res) {
-        if (!res.confirm) {
-          return;
-        }
-
-        util.request(api.AuthLogout, {}, 'POST');
-        app.globalData.hasLogin = false;
-        wx.removeStorageSync('token');
-        wx.removeStorageSync('userInfo');
-        wx.reLaunch({
-          url: '/pages/index/index'
-        });
-      }
-    })
-
-  }
-})
+}
+)

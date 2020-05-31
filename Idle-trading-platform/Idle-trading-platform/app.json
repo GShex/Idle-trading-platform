@@ -2,17 +2,21 @@
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
-    "pages/chat/chat",
-    "pages/ucenter/index/index"
+    "pages/ucenter/index/index",
+    "pages/goodsManage/index/index",
+    "pages/notice/notice",
+    "pages/about/about",
+    "pages/search/search",
+    "pages/auth/login/login"
   ],
   "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "HITsz闲置交易平台",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTitleText": "校内闲鱼交易平台",
+    "enablePullDownRefresh": false,
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#FFFFFF",
+    "backgroundTextStyle": "dark"
   },
-  "style": "v2",
-  "sitemapLocation": "sitemap.json",
   "tabBar": {
     "backgroundColor": "#fafafa",
     "borderStyle": "white",
@@ -26,10 +30,16 @@
         "text": "首页"
       },
       {
-        "pagePath": "pages/chat/chat",
-        "iconPath": "static/images/messages.png",
-        "selectedIconPath": "static/images/messages@selected.png",
+        "pagePath": "pages/notice/notice",
+        "iconPath": "static/images/message.png",
+        "selectedIconPath": "static/images/message@selected.png",
         "text": "消息"
+      },
+      {
+        "pagePath": "pages/goodsManage/index/index",
+        "iconPath": "static/images/good_manage.png",
+        "selectedIconPath": "static/images/good_manage@selected.png",
+        "text": "商品管理"
       },
       {
         "pagePath": "pages/ucenter/index/index",
@@ -38,5 +48,7 @@
         "text": "个人"
       }
     ]
-  }
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
 }
