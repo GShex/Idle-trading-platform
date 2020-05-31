@@ -25,6 +25,12 @@ view, text {
 .flex-wrp{
   display: flex;
 }
+
+.flex-good{
+  flex-grow: 1;
+  text-align: center;
+}
+
 .flex-tab{
   flex-flow: row nowrap;
   justify-content: space-around;

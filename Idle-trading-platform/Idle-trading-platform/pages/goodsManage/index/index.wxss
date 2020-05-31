@@ -22,9 +22,8 @@
     flex: 4;
     text-align: left;
   }
-  .goods-item .goods-content text{
-    /*display: block;*/
-  }
+  /* .goods-item .goods-content text{
+  } */
   .goods-item .goods-content .goods-source{
     color: #818A8F;
     font-size: 28rpx;
