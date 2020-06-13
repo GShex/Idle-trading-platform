@@ -77,6 +77,7 @@ Page({
               //如果成功获取到
               //将获取到的用户资料写入app.js全局变量
               console.log(res)
+              app.globalData.logined = true
               app.globalData.userInfo = res.result.data.userData
               app.globalData.userId = res.result.data._id
               wx.switchTab({

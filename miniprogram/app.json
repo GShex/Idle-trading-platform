@@ -8,7 +8,8 @@
     "pages/ucenter/index",
     "pages/notice/notice",
     "pages/ucenter/index/index",
-    "pages/auth/login/login"
+    "pages/auth/login/login",
+    "pages/ucenter/sold/sold"
   ],
   "window": {
     "navigationBarBackgroundColor": "#FFFFFF",
