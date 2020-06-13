@@ -22,5 +22,8 @@
 <view class="soldout" catchtap="del" data-index="{{index}}">下架</view>
 <view class="modify" catchtap="del" data-index="{{index}}">修改</view>
 </view>
-
+<view class="rectangle-click">
+   <navigator url='/pages/goodsManage/add/addGoods' >发布新商品</navigator >
 </view>
+</view>
+
