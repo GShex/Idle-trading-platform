@@ -7,15 +7,15 @@
 
   <view class="goods-item flex-wrp">
     <view class="avatar flex-item">
-      <image src="../../../static/images/gs.jpg"></image>
+      <image src="{{item.img}}"></image>
     </view>
     <view class="goods-content flex-item">
       <view class="goods-source">
-        <text class="goodsmate">高等数学</text>
+        <text class="goodsmate">{{item.goodsname}}</text>
         <text class="status">上架中</text>
         
       </view>
-      <text class="goods-txt">全新高等数学教材</text>
+      <text class="goods-txt">{{item.intro}}</text>
       
     </view>
   </view>
