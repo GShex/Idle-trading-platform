@@ -1,0 +1,55 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/about/about",
+    "pages/goodsManage/index/index",
+    "pages/search/search",
+    "pages/logs/logs",
+    "pages/ucenter/index",
+    "pages/notice/notice",
+    "pages/ucenter/index/index",
+    "pages/auth/login/login"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTitleText": "校内闲鱼交易平台",
+    "enablePullDownRefresh": false,
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#FFFFFF",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "backgroundColor": "#fafafa",
+    "borderStyle": "white",
+    "selectedColor": "#AB956D",
+    "color": "#666",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/images/home.png",
+        "selectedIconPath": "static/images/home@selected.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/notice/notice",
+        "iconPath": "static/images/message.png",
+        "selectedIconPath": "static/images/message@selected.png",
+        "text": "消息"
+      },
+      {
+        "pagePath": "pages/goodsManage/index/index",
+        "iconPath": "static/images/good_manage.png",
+        "selectedIconPath": "static/images/good_manage@selected.png",
+        "text": "商品管理"
+      },
+      {
+        "pagePath": "pages/ucenter/index/index",
+        "iconPath": "static/images/my.png",
+        "selectedIconPath": "static/images/my@selected.png",
+        "text": "个人"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

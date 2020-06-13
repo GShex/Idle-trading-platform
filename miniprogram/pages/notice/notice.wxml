@@ -1,0 +1,42 @@
+
+<view class="container chat">
+  <view class="chat-item flex-wrp">
+    <view class="avatar flex-item">
+      <image src="../../static/images/chatmate1.jpg"></image>
+    </view>
+    <view class="chat-content flex-item">
+      <view class="chat-source">
+        <text class="chatmate">Alex</text>
+        <text class="lasttime">1 个月前</text>
+        
+      </view>
+      <text class="chat-txt">那就成交</text>
+    </view>
+    <view class="goods-item flex-item">
+      <view class="good-image">
+        <image src="../../static/images/ph.jpg"></image>
+      </view>
+    </view>
+  </view>
+
+  <view class="chat-item flex-wrp">
+    <view class="avatar flex-item">
+      <image src="../../static/images/chatmate2.jpeg"></image>
+    </view>
+    <view class="chat-content flex-item">
+      <view class="chat-source">
+        <text class="chatmate">George</text>
+        <text class="lasttime">1 天前</text>
+      </view>
+      <text class="chat-txt">你好~ 我看上了你的XXX</text>
+    </view>
+    <view class="goods-item flex-item">
+      <view class="good-image">
+        <image src="../../static/images/gs.jpg"></image>
+      </view>
+    </view>
+  </view>
+
+</view>
+
+
