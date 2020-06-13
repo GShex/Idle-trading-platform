@@ -1,3 +1,4 @@
+const app = getApp();
 Page({
 
   data: {
@@ -6,35 +7,71 @@ Page({
   
   startX: 0, //开始坐标
   
-  startY: 0
-  
+  startY: 0,
+  goodsname:"",
+  price:0,
+  intro:"",
+  detail:"",
+  array:['书籍','电子产品','食品','服装'],
+  index :0,
+  onshelf: false,
+  tempImg: [],
+  fileIDs: [],
   },
   
   onLoad: function (e) {
+    wx.cloud.callFunction({
+      name: 'query_mygoods',
+      data: {
+        userid:app.globalData.userId
+      },
+      complete: res => {
+       console.log(app.globalData.userId)
+       console.log('this is result: ', res)
+        for (var i = 0; i < res.result.data.length; i++) {
   
-  var that = this;
+          this.data.items.push({
+
+          isTouchMove: false, //默认隐藏删除
+          goodsname: res.result.data[i].goodsname,
+          intro: res.result.data[i].intro,
+          img: res.result.data[i].fileIDs[0]
+          })
+          // this.setData({
+          //   goodsname: res.result.data[i].goodsname
+
+          // })
+          
+          }
+          
+          this.setData({
+          
+          items: this.data.items
+          
+          
+          });
+
+
+      },
+    })
   
-  //common是自己写的公共JS方法，可忽略
+  // for (var i = 0; i < length; i++) {
   
+  // this.data.items.push({
   
+  // content: i + " 向左滑动删除哦",
+  // content2: i + " 向右滑动删除哦",
+  // isTouchMove: false //默认隐藏删除
   
-  for (var i = 0; i < 10; i++) {
+  // })
   
-  this.data.items.push({
+  // }
   
-  content: i + " 向左滑动删除哦",
-  content2: i + " 向右滑动删除哦",
-  isTouchMove: false //默认隐藏删除
+  // this.setData({
   
-  })
+  // items: this.data.items
   
-  }
-  
-  this.setData({
-  
-  items: this.data.items
-  
-  });
+  // });
   
   }
   
@@ -155,3 +192,23 @@ Page({
   }
   
   })
+
+
+
+
+  // name: 'get2setUserInfo',
+  // data: {
+  //   getSelf: true
+  // },
+  // success: res => {
+  //   if (res.errMsg == "cloud.callFunction:ok")
+  //     if (res.result) {
+  //       //如果成功获取到
+  //       //将获取到的用户资料写入app.js全局变量
+  //       console.log(res)
+  //       app.globalData.logined = true
+  //       app.globalData.userInfo = res.result.data.userData
+  //       app.globalData.userId = res.result.data._id
+  //       wx.switchTab({
+  //         url: '/pages/index/index'
+  //       })

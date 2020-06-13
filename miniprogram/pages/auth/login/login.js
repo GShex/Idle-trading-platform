@@ -61,6 +61,7 @@ Page({
   },
   goGetUserInfo: function(e) {
     var _this = this
+   // const wxContext = cloud.getWXContext()
     //需要用户同意授权获取自身相关信息
     if (e.detail.errMsg == "getUserInfo:ok") {
       //将授权结果写入app.js全局变量
@@ -80,6 +81,7 @@ Page({
               app.globalData.logined = true
               app.globalData.userInfo = res.result.data.userData
               app.globalData.userId = res.result.data._id
+              console.log(app.globalData.userId, app.globalData.logined)
               wx.switchTab({
                 url: '/pages/index/index'
               })
