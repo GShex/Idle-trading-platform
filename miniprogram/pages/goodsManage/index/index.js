@@ -29,13 +29,18 @@ Page({
        console.log(app.globalData.userId)
        console.log('this is result: ', res)
         for (var i = 0; i < res.result.data.length; i++) {
-  
+          var state = "上架中"
+          if(res.result.data[i].status != true)
+          {
+            state = "已下架"
+          }
           this.data.items.push({
 
           isTouchMove: false, //默认隐藏删除
           goodsname: res.result.data[i].goodsname,
           intro: res.result.data[i].intro,
-          img: res.result.data[i].fileIDs[0]
+          img: res.result.data[i].fileIDs[0],
+          status: state,
           })
           // this.setData({
           //   goodsname: res.result.data[i].goodsname

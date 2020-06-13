@@ -12,7 +12,7 @@
     <view class="goods-content flex-item">
       <view class="goods-source">
         <text class="goodsmate">{{item.goodsname}}</text>
-        <text class="status">上架中</text>
+        <text class="status">{{item.status}}</text>
         
       </view>
       <text class="goods-txt">{{item.intro}}</text>
