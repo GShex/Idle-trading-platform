@@ -18,75 +18,76 @@ Page({
   onshelf: false,
   tempImg: [],
   fileIDs: [],
+  logined: false,
   },
   
   onLoad: function (e) {
     //this.fetchGoodsList(e)
-    wx.stopPullDownRefresh() //刷新完成后停止下拉刷新动效
-    wx.cloud.callFunction({
-      name: 'query_mygoods',
-      data: {
-        userid:app.globalData.userId
-      },
-      complete: res => {
-       console.log(app.globalData.userId)
-       console.log('this is result: ', res)
-        for (var i = 0; i < res.result.data.length; i++) {
-          var state = "上架中"
-          if(res.result.data[i].status != true)
-          {
-            //state = "已下架"
-            continue
-          }
-          this.data.items.push({
+    // wx.stopPullDownRefresh() //刷新完成后停止下拉刷新动效
+    // wx.cloud.callFunction({
+    //   name: 'query_mygoods',
+    //   data: {
+    //     userid:app.globalData.userId
+    //   },
+    //   complete: res => {
+    //    console.log(app.globalData.userId)
+    //    console.log('this is result: ', res)
+    //     for (var i = 0; i < res.result.data.length; i++) {
+    //       var state = "上架中"
+    //       if(res.result.data[i].status != true)
+    //       {
+    //         //state = "已下架"
+    //         continue
+    //       }
+    //       this.data.items.push({
 
-          isTouchMove: false, //默认隐藏删除
-          goodsname: res.result.data[i].goodsname,
-          intro: res.result.data[i].intro,
-          img: res.result.data[i].fileIDs[0],
-          status: state,
-          id: res.result.data[i]._id
-          })
+    //       isTouchMove: false, //默认隐藏删除
+    //       goodsname: res.result.data[i].goodsname,
+    //       intro: res.result.data[i].intro,
+    //       img: res.result.data[i].fileIDs[0],
+    //       status: state,
+    //       id: res.result.data[i]._id
+    //       })
 
-          // this.setData({
-          //   goodsname: res.result.data[i].goodsname
+    //       // this.setData({
+    //       //   goodsname: res.result.data[i].goodsname
 
-          // })
+    //       // })
           
-          }
-          for (var i = 0; i < res.result.data.length; i++) {
-            var state = "已下架"
-            if(res.result.data[i].status == true)
-            {
-              continue
-            }
-            this.data.items.push({
+    //       }
+    //       for (var i = 0; i < res.result.data.length; i++) {
+    //         var state = "已下架"
+    //         if(res.result.data[i].status == true)
+    //         {
+    //           continue
+    //         }
+    //         this.data.items.push({
   
-            isTouchMove: false, //默认隐藏删除
-            goodsname: res.result.data[i].goodsname,
-            intro: res.result.data[i].intro,
-            img: res.result.data[i].fileIDs[0],
-            status: state,
-            id: res.result.data[i]._id
-            })
+    //         isTouchMove: false, //默认隐藏删除
+    //         goodsname: res.result.data[i].goodsname,
+    //         intro: res.result.data[i].intro,
+    //         img: res.result.data[i].fileIDs[0],
+    //         status: state,
+    //         id: res.result.data[i]._id
+    //         })
             
-            // this.setData({
-            //   goodsname: res.result.data[i].goodsname
+    //         // this.setData({
+    //         //   goodsname: res.result.data[i].goodsname
   
-            // })
+    //         // })
             
-            }
+    //         }
           
-          this.setData({
+    //       this.setData({
           
-          items: this.data.items
+    //       items: this.data.items
           
           
-          });
+    //       });
 
 
-      },
-    })
+    //   },
+    //})
 
   
   // for (var i = 0; i < length; i++) {
@@ -193,88 +194,7 @@ Page({
   
   // // });
   // },
-  // onShow:function(e){
-  //   wx.cloud.callFunction({
-  //     name: 'query_mygoods',
-  //     data: {
-  //       userid:app.globalData.userId
-  //     },
-  //     complete: res => {
-  //      console.log(app.globalData.userId)
-  //      console.log('this is result: ', res)
-  //       for (var i = 0; i < res.result.data.length; i++) {
-  //         var state = "上架中"
-  //         if(res.result.data[i].status != true)
-  //         {
-  //           //state = "已下架"
-  //           continue
-  //         }
-  //         this.data.items.push({
-
-  //         isTouchMove: false, //默认隐藏删除
-  //         goodsname: res.result.data[i].goodsname,
-  //         intro: res.result.data[i].intro,
-  //         img: res.result.data[i].fileIDs[0],
-  //         status: state,
-  //         })
-
-  //         // this.setData({
-  //         //   goodsname: res.result.data[i].goodsname
-
-  //         // })
-          
-  //         }
-  //         for (var i = 0; i < res.result.data.length; i++) {
-  //           var state = "已下架"
-  //           if(res.result.data[i].status == true)
-  //           {
-  //             continue
-  //           }
-  //           this.data.items.push({
   
-  //           isTouchMove: false, //默认隐藏删除
-  //           goodsname: res.result.data[i].goodsname,
-  //           intro: res.result.data[i].intro,
-  //           img: res.result.data[i].fileIDs[0],
-  //           status: state,
-  //           })
-            
-  //           // this.setData({
-  //           //   goodsname: res.result.data[i].goodsname
-  
-  //           // })
-            
-  //           }
-          
-  //         this.setData({
-          
-  //         items: this.data.items
-          
-          
-  //         });
-
-
-  //     },
-  //   })
-  
-  // // for (var i = 0; i < length; i++) {
-  
-  // // this.data.items.push({
-  
-  // // content: i + " 向左滑动删除哦",
-  // // content2: i + " 向右滑动删除哦",
-  // // isTouchMove: false //默认隐藏删除
-  
-  // // })
-  
-  // // }
-  
-  // // this.setData({
-  
-  // // items: this.data.items
-  
-  // // });
-  // },
   onPullDownRefresh(e) {
     // 上拉刷新
     this.setData({
@@ -283,9 +203,103 @@ Page({
       
       
       });
-    this.onLoad(); //重新加载onLoad()
-    
+    //this.onLoad(); //重新加载onLoad()
+    this.onShow(); //重新加载onLoad()
   },
+
+  onShow:function(e){
+    //this.onPullDownRefresh(e)
+    this.setData({
+          
+      items: [],
+      logined : app.globalData.logined
+      
+      });
+      wx.stopPullDownRefresh() //刷新完成后停止下拉刷新动效
+      wx.cloud.callFunction({
+        name: 'query_mygoods',
+        data: {
+          userid:app.globalData.userId
+        },
+        complete: res => {
+         console.log(app.globalData.userId)
+         console.log('this is result: ', res)
+          for (var i = 0; i < res.result.data.length; i++) {
+            var state = "上架中"
+            if(res.result.data[i].status != true)
+            {
+              //state = "已下架"
+              continue
+            }
+            this.data.items.push({
+  
+            isTouchMove: false, //默认隐藏删除
+            goodsname: res.result.data[i].goodsname,
+            intro: res.result.data[i].intro,
+            img: res.result.data[i].fileIDs[0],
+            status: state,
+            id: res.result.data[i]._id
+            })
+  
+            // this.setData({
+            //   goodsname: res.result.data[i].goodsname
+  
+            // })
+            
+            }
+            for (var i = 0; i < res.result.data.length; i++) {
+              var state = "已下架"
+              if(res.result.data[i].status == true)
+              {
+                continue
+              }
+              this.data.items.push({
+    
+              isTouchMove: false, //默认隐藏删除
+              goodsname: res.result.data[i].goodsname,
+              intro: res.result.data[i].intro,
+              img: res.result.data[i].fileIDs[0],
+              status: state,
+              id: res.result.data[i]._id
+              })
+              
+              // this.setData({
+              //   goodsname: res.result.data[i].goodsname
+    
+              // })
+              
+              }
+            
+            this.setData({
+            
+            items: this.data.items
+            
+            
+            });
+  
+  
+        },
+      })
+  
+    
+    // for (var i = 0; i < length; i++) {
+    
+    // this.data.items.push({
+    
+    // content: i + " 向左滑动删除哦",
+    // content2: i + " 向右滑动删除哦",
+    // isTouchMove: false //默认隐藏删除
+    
+    // })
+    
+    // }
+    
+    // this.setData({
+    
+    // items: this.data.items
+    
+    // });
+   },
   //手指触摸动作开始 记录起点X坐标
   
   touchstart: function (e) {
@@ -445,10 +459,17 @@ Page({
       //url: "/pages/goodsManage/modify/modify?id="+this.data.items[i].id+"&goodsname="+this.data.items[i].goodsname+"&price"+this.data.items[i].price+"&intro="+this.data.items[i].intro+"&detail="+this.data.items[i].detail+"&type="+this.data.items[i].type+"&fileIDs="+this.data.items[i].fileIDs
       url: "/pages/goodsManage/modify/modify?id="+this.data.items[i].id
     });
+  },
+  goLogin:function(){
+    if (!this.data.logined) {
+      wx.navigateTo({
+        url: "/pages/auth/login/login"
+      });
+    }
   }
-  
-  })
 
+  })
+  
 
 
 

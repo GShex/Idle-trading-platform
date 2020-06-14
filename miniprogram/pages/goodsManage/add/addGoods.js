@@ -133,6 +133,9 @@ Page({
         wx.showToast({
           title: '提交成功',
         })
+        wx.switchTab({
+          url: '/pages/goodsManage/index/index'
+        })
       }).catch(res=>{
         console.log("添加失败",res)
       })
