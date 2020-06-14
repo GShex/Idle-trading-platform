@@ -78,7 +78,7 @@ Page({
   getForm:function(e){
     var formdata = e.detail.value;
     var getdata = this;
-    
+    console.log(formdata)
     wx.showLoading({
       title: '提交中',
     })

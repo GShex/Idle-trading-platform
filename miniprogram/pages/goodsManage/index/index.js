@@ -420,7 +420,7 @@ Page({
       })
       this.onLoad()
     
-    },
+  },
   offshelf: function (e) {
   
     var i = e.currentTarget.dataset.index
@@ -438,9 +438,17 @@ Page({
       })
       this.onLoad()
     
-    },
+  },
+  modify:function(e){
+    var i = e.currentTarget.dataset.index
+    wx.navigateTo({
+      //url: "/pages/goodsManage/modify/modify?id="+this.data.items[i].id+"&goodsname="+this.data.items[i].goodsname+"&price"+this.data.items[i].price+"&intro="+this.data.items[i].intro+"&detail="+this.data.items[i].detail+"&type="+this.data.items[i].type+"&fileIDs="+this.data.items[i].fileIDs
+      url: "/pages/goodsManage/modify/modify?id="+this.data.items[i].id
+    });
+  }
   
   })
+
 
 
 

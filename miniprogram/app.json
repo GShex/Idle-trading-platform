@@ -10,7 +10,8 @@
     "pages/ucenter/index/index",
     "pages/auth/login/login",
     "pages/ucenter/sold/sold",
-    "pages/goodsManage/add/addGoods"
+    "pages/goodsManage/add/addGoods",
+    "pages/goodsManage/modify/modify"
   ],
   "window": {
     "navigationBarBackgroundColor": "#FFFFFF",
