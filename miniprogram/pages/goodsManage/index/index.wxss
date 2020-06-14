@@ -103,6 +103,31 @@
     transition: all 0.4s;
     
     }
+  .onshelf {
+
+    background-color: green;
+    
+    width: 90px;
+    
+    display: flex;
+    
+    flex-direction: column;
+    
+    align-items: center;
+    
+    justify-content: center;
+    
+    color: #fff;
+    
+    -webkit-transform: translateX(180px);
+    
+    transform: translateX(180px);
+    
+    -webkit-transition: all 0.4s;
+    
+    transition: all 0.4s;
+    
+    }
   .modify {
 
     background-color: blue;
@@ -224,6 +249,13 @@
   }
   .touch-move-active .soldout {
   
+    -webkit-transform: translateX(0);
+    
+    transform: translateX(0);
+    
+    }
+  .touch-move-active .onshelf {
+
     -webkit-transform: translateX(0);
     
     transform: translateX(0);

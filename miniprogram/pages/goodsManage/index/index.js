@@ -1,4 +1,5 @@
 const app = getApp();
+const db = wx.cloud.database();
 Page({
 
   data: {
@@ -44,6 +45,7 @@ Page({
           intro: res.result.data[i].intro,
           img: res.result.data[i].fileIDs[0],
           status: state,
+          id: res.result.data[i]._id
           })
 
           // this.setData({
@@ -65,6 +67,7 @@ Page({
             intro: res.result.data[i].intro,
             img: res.result.data[i].fileIDs[0],
             status: state,
+            id: res.result.data[i]._id
             })
             
             // this.setData({
@@ -387,15 +390,55 @@ Page({
   
   del: function (e) {
   
-  this.data.items.splice(e.currentTarget.dataset.index, 1)
+    var i = e.currentTarget.dataset.index
   
-  this.setData({
+    db.collection('goods').doc(this.data.items[i].id).remove().then(res=>{
+      console.log(i)
+    })
+   this.data.items.splice(i, 1)
+   this.setData({
   
-  items: this.data.items
+    items: this.data.items
   
-  })
+   })
   
-  }
+  },
+  onshelf: function (e) {
+    
+    var i = e.currentTarget.dataset.index
+    db.collection('goods').doc(this.data.items[i].id).update({
+  		data:{
+  			status:true,
+    	}
+   	}).then(res=>{
+    	console.log(i)
+   	})
+     this.setData({
+  
+      items: []
+      
+      })
+      this.onLoad()
+    
+    },
+  offshelf: function (e) {
+  
+    var i = e.currentTarget.dataset.index
+    db.collection('goods').doc(this.data.items[i].id).update({
+      data:{
+        status:false,
+      }
+      }).then(res=>{
+      console.log(i)
+      })
+      this.setData({
+  
+      items: []
+      
+      })
+      this.onLoad()
+    
+    },
   
   })
 

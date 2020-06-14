@@ -19,9 +19,16 @@
       
     </view>
   </view>
-<view class="soldout" catchtap="del" data-index="{{index}}">下架</view>
+<block wx:if="{{item.status=='上架中'}}">
+<view class="soldout" catchtap="offshelf" data-index="{{index}}">下架</view>
 <view class="modify" catchtap="del" data-index="{{index}}">修改</view>
+</block>
+<block wx:else>
+<view class="onshelf" catchtap="onshelf" data-index="{{index}}">上架</view>
+<view class="del" catchtap="del" data-index="{{index}}">删除</view>
+</block>
 </view>
+
 <view class="rectangle-click">
    <navigator url='/pages/goodsManage/add/addGoods' >发布新商品</navigator >
 </view>
