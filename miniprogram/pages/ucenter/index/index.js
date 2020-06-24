@@ -128,7 +128,7 @@ Page({
   goCollect() {
     if (this.data.logined) {
       wx.navigateTo({
-        url: "/pages/groupon/myGroupon/myGroupon"
+        url: "../../../packageA/pages/favorate/favorate"
       });
     } else {
       wx.navigateTo({

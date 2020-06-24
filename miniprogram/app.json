@@ -18,11 +18,11 @@
     {
       "root": "packageA",
       "pages": [
-       
+        "pages/goodspage/goodspage",
+        "pages/favorate/favorate"
       ]
     }
   ],
-
   "window": {
     "navigationBarBackgroundColor": "#FFFFFF",
     "navigationBarTitleText": "校内闲鱼交易平台",
