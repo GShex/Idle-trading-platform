@@ -1,6 +1,6 @@
 <view class="list2-box">
    <!-- <text class="goodsmate">{{item.goodsName}}</text> -->
-    <view class="list2" wx:for="{items}}" wx:key="id">
+    <view class="list2" wx:for="{{items}}" wx:key="id">
       <navigator url="/pages/goods-details/index?id={{item.goodsId}}"><image class="img" mode="aspectFill" src="{{item.pic}}"></image></navigator>
       <view class="goods-info">
         <navigator url="/pages/goods-details/index?id={{item.goodsId}}"><view class="title ellipsis">{{item.goodsName}}</view></navigator>
