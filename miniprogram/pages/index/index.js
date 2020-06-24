@@ -1,9 +1,11 @@
 //index.js
 //获取应用实例
-const app = getApp()
+const app = getApp();
+const db = wx.cloud.database();
 
 Page({
   data: {
+    items: [],
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
@@ -42,6 +44,25 @@ Page({
         }
       })
     }
+    this.setData({
+      items: [],
+    })
+    wx.cloud.callFunction({
+      name: 'query_anygoods',
+      complete: res => {
+        console.log('onload this is result: ', res)
+        for(var i = 0;i < res.result.data.length;i++){
+          this.data.items.push({
+            goodsname: res.result.data[i].goodsname,
+            intro: res.result.data[i].intro,
+            img: res.result.data[i].fileIDs[0],
+            status: "上架中",
+            price: res.result.data[i].price,
+            id: res.result.data[i]._id
+          })
+        }
+      }
+    })
   },
   getUserInfo: function(e) {
     console.log(e)
@@ -50,5 +71,42 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+  },
+  onPullDownRefresh(e) {
+    // 上拉刷新
+    this.setData({
+      items: []
+      });
+    //this.onLoad(); //重新加载onLoad()
+    this.onShow(); //重新加载onLoad()
+  },
+  onShow(){
+    this.setData({
+      items: [],
+    })
+    wx.cloud.callFunction({
+      name: 'query_anygoods',
+      complete: res => {
+        console.log('onshow this is result: ', res)
+        for(var i = 0;i < res.result.data.length;i++){
+          this.data.items.push({
+            goodsname: res.result.data[i].goodsname,
+            intro: res.result.data[i].intro,
+            img: res.result.data[i].fileIDs[0],
+            status: "上架中",
+            price: res.result.data[i].price,
+            id: res.result.data[i]._id
+          })
+        }
+        this.setData({
+          items: this.data.items
+        });
+      }
+    })
+  // },
+  // toDetailsTap: function(e) {
+  //   wx.navigateTo({
+  //     url: "/pages/goods-details/index?id=" + e.currentTarget.dataset.id
+  //   })
   }
 })
