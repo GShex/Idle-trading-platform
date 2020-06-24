@@ -117,12 +117,11 @@ Page({
   goHistory() {
     if (this.data.logined) {
       wx.navigateTo({
-        url: "../../../packageA/pages/goodswatched/goodswatched"
+        url: "/pages/groupon/myGroupon/myGroupon"
       });
     } else {
       wx.navigateTo({
-        //url: "/pages/auth/login/login"
-        url: "../../../packageA/pages/goodswatched/goodswatched"
+        url: "/pages/auth/login/login"
       });
     };
   },

@@ -9,16 +9,12 @@ exports.main = async (event, context) => {
   const wxContext = cloud.getWXContext()
 
   return await db.collection('goods')
+  .where({
+    status: true
+  })
   .get({
     success: function(res) {
       console(res.data)
     }
   })
-
-  return {
-    event,
-    openid: wxContext.OPENID,
-    appid: wxContext.APPID,
-    unionid: wxContext.UNIONID,
-  }
 }

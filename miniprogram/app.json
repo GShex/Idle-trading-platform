@@ -18,8 +18,7 @@
     {
       "root": "packageA",
       "pages": [
-        "pages/goodswatched/goodswatched",
-        "pages/hello/hello"
+        "pages/good_detail/good_detail"
       ]
     }
   ],
