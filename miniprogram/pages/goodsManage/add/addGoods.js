@@ -119,6 +119,7 @@ Page({
       db.collection("goods").add({
         data:{
           userid:app.globalData.userId,
+          userInfo:app.globalData.userInfo,
           goodsname:getdata.data.goodsname,
           price:getdata.data.price,
           intro:getdata.data.intro,

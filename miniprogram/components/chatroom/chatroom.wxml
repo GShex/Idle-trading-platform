@@ -21,7 +21,7 @@
       wx:for="{{chats}}"
       wx:key="{{item._id}}"
       id="item-{{index}}"
-      class="message {{openId == item._openid ? 'message__self' : ''}}"
+      class="message {{userId == item._userid ? 'message__self' : ''}}"
     >
       <image 
         class="avatar"

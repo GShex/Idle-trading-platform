@@ -18,6 +18,7 @@ App({
     this.globalData = {
       //用户ID
       userId: '',
+      openid:'',
       //用户信息
       userInfo: null,
       //授权状态

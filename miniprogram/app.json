@@ -11,7 +11,8 @@
     "pages/auth/login/login",
     "pages/ucenter/sold/sold",
     "pages/goodsManage/add/addGoods",
-    "pages/goodsManage/modify/modify"
+    "pages/goodsManage/modify/modify",
+    "pages/chat/chat"
   ],
   "window": {
     "navigationBarBackgroundColor": "#FFFFFF",
