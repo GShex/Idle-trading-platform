@@ -14,6 +14,15 @@
     "pages/goodsManage/modify/modify",
     "pages/chat/chat"
   ],
+  "subPackages": [
+    {
+      "root": "packageA",
+      "pages": [
+       
+      ]
+    }
+  ],
+
   "window": {
     "navigationBarBackgroundColor": "#FFFFFF",
     "navigationBarTitleText": "校内闲鱼交易平台",
