@@ -113,21 +113,21 @@ Page({
       });
     }
   },
-  goHistory() {
+  goGoodsWatched() {
     if (this.data.hasLogin) {
       wx.navigateTo({
-        url: "/pages/groupon/myGroupon/myGroupon"
+        url: "/miniprogram/packageA/pages/goodswatched/goodswatched"
       });
     } else {
       wx.navigateTo({
-        url: "/pages/auth/login/login"
+        url: "/miniprogram/packageA/pages/goodswatched/goodswatched"
       });
     };
   },
   goCollect() {
     if (this.data.hasLogin) {
       wx.navigateTo({
-        url: "/pages/groupon/myGroupon/myGroupon"
+        url: "/miniprogram/packageA/pages/goodswatched/goodswatched"
       });
     } else {
       wx.navigateTo({

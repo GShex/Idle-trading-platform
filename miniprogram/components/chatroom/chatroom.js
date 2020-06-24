@@ -69,12 +69,12 @@ Component({
         this.setData({
           groupId: this.properties.groupId,
         })
-        console.log('groupId',this.data.groupId)
-        console.log('pgroupId',this.properties.groupId)
+       // console.log('groupId',this.data.groupId)
+        //console.log('pgroupId',this.properties.groupId)
         const _ = db.command
         //这里是获得聊天记录将序排列
-       // const { data: initList } = await db.collection(collection).where(this.mergeCommonCriteria()).orderBy('sendTimeTS', 'desc').get()
-        const { data: initList } = await db.collection(collection).where({groupId: '6e404dda55d0bdeb866d59d1d5ece63c0f532f2ac957119f4f377d760f93ca69'}).orderBy('sendTimeTS', 'desc').get()
+        const { data: initList } = await db.collection(collection).where(this.mergeCommonCriteria()).orderBy('sendTimeTS', 'desc').get()
+        //const { data: initList } = await db.collection(collection).where({groupId: '6e404dda55d0bdeb866d59d1d5ece63c0f532f2ac957119f4f377d760f93ca69'}).orderBy('sendTimeTS', 'desc').get()
         console.log('init query chats', initList)
 
         this.setData({
