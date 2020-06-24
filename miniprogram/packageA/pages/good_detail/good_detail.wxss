@@ -1,0 +1,57 @@
+/* miniprogram/packageA/pages/good_detail/good_detail.wxss */
+.container {
+  background-color: #F2f2f2;
+  min-height: 100%;
+  padding-bottom: 100rpx;
+}
+.swiper-container{
+  width: 100%;
+  position: relative;  
+}
+.swiper_box {
+  width: 100%;
+  height:748rpx;
+}
+
+swiper-item image {
+  width: 100%;
+  display: inline-block;
+  overflow: hidden;
+  height:748rpx;
+}
+.goods-info{
+  background-color: #fff;
+  padding: 35rpx 0;
+  margin-bottom: 24rpx;
+  width: 100%;
+  position: relative;
+  box-sizing: border-box;
+  padding: 0 35rpx;
+  font-size: 32rpx;
+  line-height: 1.4;
+  color: #000;
+  margin-bottom: 28rpx;
+  
+}
+
+.footer-box{
+  width: 100%;
+  height: 100rpx;
+  background-color: #fff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  box-shadow:0 0 1rpx 0 ;
+  align-items: center;
+}
+
+.fav-icon {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.contact {
+  align: center;
+  background-color: coral;
+}

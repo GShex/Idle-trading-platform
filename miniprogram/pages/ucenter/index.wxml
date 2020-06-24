@@ -27,7 +27,7 @@
       <image class='user_column_item_image' src='/static/images/collect.png'></image>
       <view class='user_column_item_text'>商品收藏</view>
     </view>
-    <view class='user_column_item' bindtap='goGoodsWatched'>
+    <view class='user_column_item' bindtap='goHistory'>
       <image class='user_column_item_image' src='/static/images/footprint.png'></image>
       <view class='user_column_item_text'>浏览历史</view>
     </view>
