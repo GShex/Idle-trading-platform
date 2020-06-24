@@ -47,22 +47,6 @@ Page({
     this.setData({
       items: [],
     })
-    wx.cloud.callFunction({
-      name: 'query_anygoods',
-      complete: res => {
-        console.log('onload this is result: ', res)
-        for(var i = 0;i < res.result.data.length;i++){
-          this.data.items.push({
-            goodsname: res.result.data[i].goodsname,
-            intro: res.result.data[i].intro,
-            img: res.result.data[i].fileIDs[0],
-            status: "上架中",
-            price: res.result.data[i].price,
-            id: res.result.data[i]._id
-          })
-        }
-      }
-    })
   },
   getUserInfo: function(e) {
     console.log(e)
@@ -77,7 +61,6 @@ Page({
     this.setData({
       items: []
       });
-    //this.onLoad(); //重新加载onLoad()
     this.onShow(); //重新加载onLoad()
   },
   onShow(){
@@ -89,14 +72,16 @@ Page({
       complete: res => {
         console.log('onshow this is result: ', res)
         for(var i = 0;i < res.result.data.length;i++){
-          this.data.items.push({
-            goodsname: res.result.data[i].goodsname,
-            intro: res.result.data[i].intro,
-            img: res.result.data[i].fileIDs[0],
-            status: "上架中",
-            price: res.result.data[i].price,
-            id: res.result.data[i]._id
-          })
+          // if(res.result.data[i].status == true){
+            this.data.items.push({
+              goodsname: res.result.data[i].goodsname,
+              intro: res.result.data[i].intro,
+              img: res.result.data[i].fileIDs[0],
+              status: "上架中",
+              price: res.result.data[i].price,
+              id: res.result.data[i]._id
+            })
+          // }
         }
         this.setData({
           items: this.data.items
