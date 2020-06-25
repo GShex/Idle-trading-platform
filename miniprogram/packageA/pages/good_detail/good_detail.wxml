@@ -14,22 +14,25 @@
     </view>
   </view>
   <view class="goods-des-info">
-    <view class="label-title">商品详情</view>
-    <view wx:for="{{item.imgs}}" wx:key="id" wx:for-item="oneimg">
-        <image src="{{oneimg}}" class="image" lazy-load="true" />
-      </view>
+    <view class="label-title">商品简介</view>
+    <view class="label-title">{{item.detail}}</view>
+    <!-- <view wx:for="{{item.imgs}}" wx:key="id" wx:for-item="oneimg">
+      <image src="{{oneimg}}" class="image" lazy-load="true" />
+    </view> -->
     <!-- <view class="goods-text">
       <parser html="{{goodsDetail.content}}" />
     </view> -->
   </view>
-  <view class="footer-box">
-    <!-- <view class="contact">
-      <button type="primary" open-type="contact" />
-      <image src="../../../static/images/contact.png"></image>
-    </view> -->
+  <view class="rectangle-click-l">
+    <navigator url='/pages/goodsManage/add/addGoods'>收藏商品</navigator>
+  </view>
+  <view class="rectangle-click-r">
+    <navigator url='../pages/goodsManage/add/addGoods' >联系卖家</navigator >
+  </view>
+  <!-- <view class="footer-box">
     <image bindtap="addFav" class="fav-icon" src="../../../static/images/fav.png"></image>
     <view class="contact" bindtap="{{contact}}">联系卖家</view>
-  </view>
+  </view> -->
 </view>
 
 <!-- <block wx:if="{{posterShow}}">
