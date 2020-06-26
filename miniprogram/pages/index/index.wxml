@@ -9,43 +9,13 @@
   <view class="a-section a-topic" wx:if="topics.length > 0" hidden="{{topics.length <= 0}}">
     <view class="h">
       <view>
-        <!-- <navigator url="/pages/topic/topic"> -->
-          <text class="txt">为你推荐</text>
-        <!-- </navigator> -->
+        <text class="txt">为你推荐</text>
       </view>
     </view>
-    <!-- <view class="b">
-      <scroll-view scroll-x class="list">
-        <view class="item" wx:for="{{topics}}" wx:for-index="index" wx:for-item="item" wx:key="id">
-          <navigator url="../topicDetail/topicDetail?id={{item.id}}">
-            <image class="img" src="{{item.picUrl}}" background-size="cover"></image>
-            <view class="np">
-              <text class="name">{{item.title}}</text>
-              <text class="price">￥{{item.price}}元起</text>
-            </view>
-            <text class="desc">{{item.subtitle}}</text>
-          </navigator>
-        </view>
-      </scroll-view>
-    </view> -->
   </view>
-  <!-- <view class="good-grid" wx:for="{{items}}" wx:key="id"> -->
-  <!-- <view class="good-grid">
-    <view class="b">
-      <block wx:for="{{items}}" wx:for-index="index" wx:for-item="item" wx:key="id">
-        <view class="item {{index % 2 == 0 ? '' : 'item-b'}}">
-          <navigator url="../goods/goods?id={{item.id}}" class="a">
-            <image class="img" src="{{item.img}}" background-size="cover"></image>
-            <text class="name">{{item.goodsname}}</text>
-            <text class="price">￥{{item.price}}</text>
-          </navigator>
-        </view>
-      </block>
-    </view>
-  </view> -->
   <view class="goods-container" wx:if="{{items.length > 0}}">
     <view class="goods-box" wx:for="{{items}}" wx:for-item="item" wx:key="id" data-id="{{item.id}}">
-      <navigator url="../../packageA/pages/good_detail/good_detail?id={{item.id}}" class="a">
+      <navigator url="../../packageA/pages/good_detail/good_detail?goodsid={{item.id}}" class="a">
         <view class="img-box">
           <image src="{{(item.img)?item.img:'../../static/images/loading.png'}}" class="image" mode="aspectFill" lazy-load="true" />
         </view>
@@ -53,7 +23,6 @@
       <view class="goods-title">{{item.goodsname}}</view>
       <view style='display:flex;'>
         <view class="goods-price">¥ {{item.price}}</view>
-        <!-- <view wx:if="{{item.originalPrice && item.originalPrice > 0}}" class="goods-price" style='color:#aaa;text-decoration:line-through'>¥ {{item.originalPrice}}</view> -->
       </view>
     </view>
   </view>
