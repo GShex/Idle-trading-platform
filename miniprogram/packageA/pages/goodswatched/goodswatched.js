@@ -57,39 +57,54 @@ Page({
           console.log(app.globalData.userId)
           console.log('this is result: ', res)
           if(res.result.data.length>10){
-            var max = 10
+            for (var i = 0; i < 10; i++) {
+              // var state = "上架中"
+              // if(res.result.data[i].status != true)
+              // {
+              //   //state = "已下架"
+              //   continue
+              // }
+              this.data.items.push({
+              goodsname: res.result.data[i].goodsname,
+              intro: res.result.data[i].intro,
+              img: res.result.data[i].fileID,
+              //status: state,
+              price:res.result.data[i].price,
+              id: res.result.data[i].goodsid
+              })
+              
+              }
+            //var max = 2
             //然后清除10条之前的
             for (var i = 10; i < res.result.data.length; i++){
-              db.collection('watchedgoods').where(_.and([
-                {
-                  goodsid: res.result.data[i].goodsid
-                },
-                {
-                  userid:res.result.data[i].userid
-                }
-              ])).remove().then(res=>{
+              db.collection('watchedgoods').where({
+                userid: res.result.data[i],
+                goodsid: res.result.data[i]
+              }).remove().then(res=>{
                 console.log(i)
               })
             }
           }
-          else var max = res.result.data.length
-          for (var i = 0; i < max; i++) {
-            // var state = "上架中"
-            // if(res.result.data[i].status != true)
-            // {
-            //   //state = "已下架"
-            //   continue
-            // }
-            this.data.items.push({
-            goodsname: res.result.data[i].goodsname,
-            intro: res.result.data[i].intro,
-            img: res.result.data[i].fileID,
-            //status: state,
-            price:res.result.data[i].price,
-            id: res.result.data[i].goodsid
-            })
-            
-            }
+          else {
+            for (var i = 0; i < res.result.data.length; i++) {
+              // var state = "上架中"
+              // if(res.result.data[i].status != true)
+              // {
+              //   //state = "已下架"
+              //   continue
+              // }
+              this.data.items.push({
+              goodsname: res.result.data[i].goodsname,
+              intro: res.result.data[i].intro,
+              img: res.result.data[i].fileID,
+              //status: state,
+              price:res.result.data[i].price,
+              id: res.result.data[i].goodsid
+              })
+              
+              }
+          }
+          
             
             
             this.setData({

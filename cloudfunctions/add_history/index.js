@@ -22,7 +22,7 @@ exports.main = async (event, context) => {
     } catch (e) {
       console.error(e)//输出错误信息
     }
-  }else{
+  }else if(event.del = false){
     try {
       return await db.collection('watchedgoods').add({
         data: {
@@ -38,5 +38,9 @@ exports.main = async (event, context) => {
     } catch (e) {
       console.error(e)//输出错误信息
     }
+
+  }
+  else{
+    
   }
 }

@@ -17,7 +17,7 @@
           <text class="lasttime">{{item.price}}</text>
           
         </view>
-        <text class="chat-txt">那就成交</text>
+        <!-- <text class="chat-txt">那就成交</text> -->
       </view>
       <view class="goods-item flex-item">
         <view class="good-image">
