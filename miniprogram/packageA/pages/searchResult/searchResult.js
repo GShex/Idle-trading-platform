@@ -10,48 +10,24 @@ Page({
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    //搜索框内容
-    inputVal: ''
+    goodsname: ''
   },
   //事件处理函数
   bindViewTap: function() {
     wx.navigateTo({
-      url: '../logs/logs'
+      // url: '../logs/logs'
+      url: '../../../pages/logs/logs'
     })
   },
-  onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
+  onLoad: function (query) {
     this.setData({
-      items: [],
+      goodsname: query.key,
+      items: {}
     })
+    console.log(this.data.goodsname)
+    // this.onShow(query.id)
   },
   getUserInfo: function(e) {
-    console.log(e)
     app.globalData.userInfo = e.detail.userInfo
     this.setData({
       userInfo: e.detail.userInfo,
@@ -70,7 +46,10 @@ Page({
       items: [],
     })
     wx.cloud.callFunction({
-      name: 'query_anygoods',
+      name: 'search_goods',
+      data:{
+        goodsname: this.data.goodsname
+      },
       complete: res => {
         console.log('onshow this is result: ', res)
         for(var i = 0;i < res.result.data.length;i++){
@@ -93,17 +72,5 @@ Page({
   //   wx.navigateTo({
   //     url: "/pages/goods-details/index?id=" + e.currentTarget.dataset.id
   //   })
-  },
-  bindinput(e) {
-    this.setData({
-      inputVal: e.detail.value
-    })
-  },
-  goSearch(){
-    console.log(this.data.inputVal)
-    wx.navigateTo({
-      // url: '/pages/goods/list?name=' + this.data.inputVal,
-      url: '../../packageA/pages/searchResult/searchResult?key=' + this.data.inputVal,
-    })
   }
 })

@@ -12,6 +12,9 @@ exports.main = async (event, context) => {
   .where({
     status: true
   })
+  .orderBy('sendTimeTS', 'desc')
+  //上限20
+  .limit(20)
   .get({
     success: function(res) {
       console(res.data)
