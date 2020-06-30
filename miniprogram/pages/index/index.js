@@ -105,5 +105,14 @@ Page({
       // url: '/pages/goods/list?name=' + this.data.inputVal,
       url: '../../packageA/pages/searchResult/searchResult?key=' + this.data.inputVal,
     })
+  },
+  bindconfirm(e) {
+    this.setData({
+      inputVal: e.detail.value
+    })
+    console.log(this.data.inputVal)
+    wx.navigateTo({
+      url: '../../packageA/pages/searchResult/searchResult?key=' + this.data.inputVal,
+    })
   }
 })
