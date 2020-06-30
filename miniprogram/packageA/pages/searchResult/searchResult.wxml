@@ -1,0 +1,17 @@
+<!--index.wxml-->
+<!-- <text>{{goodsname}}</text> -->
+<view class="container">
+  <view class="goods-container" wx:if="{{items.length > 0}}">
+    <view class="goods-box" wx:for="{{items}}" wx:for-item="item" wx:key="id" data-id="{{item.id}}">
+      <navigator url= "../good_detail/good_detail?goodsid={{item.id}}" class="a">
+        <view class="img-box">
+          <image src="{{(item.img)?item.img:'../../../static/images/loading.png'}}" class="image" mode="aspectFill" lazy-load="true" />
+        </view>
+      </navigator>
+      <view class="goods-title">{{item.goodsname}}</view>
+      <view style='display:flex;'>
+        <view class="goods-price">¥ {{item.price}}</view>
+      </view>
+    </view>
+  </view>
+</view>

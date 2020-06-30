@@ -1,11 +1,14 @@
 <!--index.wxml-->
 <view class="container">
-<view class="search">
-    <navigator url="/pages/search/search" class="input">
+  <view class="search">
+    <input type="text" placeholder="输入搜索关键词" value="{{name}}" bindinput="bindinput" bindconfirm="bindconfirm"></input>
+    <image src="../../static/images/search.svg" bindtap="goSearch"></image>
+
+    <!-- <navigator url="/pages/search/search" class="input">
       <van-icon name="search"/>
       <text class="txt">商品搜索</text>
-    </navigator>
-</view>
+    </navigator> -->
+  </view>
   <view class="a-section a-topic" wx:if="topics.length > 0" hidden="{{topics.length <= 0}}">
     <view class="h">
       <view>
