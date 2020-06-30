@@ -228,6 +228,7 @@ Page({
    */
   onShareAppMessage: function () {
 
+
   },
 
   goLogin:function(){
@@ -330,6 +331,7 @@ Page({
               }
             })
           }
+
           wx.navigateTo({
             url: '../../../pages/chat/chat?id=' 
               + app.globalData.userId + this.data.item.sellerid
@@ -338,6 +340,7 @@ Page({
           })
         }
       })
+
     }
   },
   getUserInfo(){
@@ -345,5 +348,6 @@ Page({
   },
   ifChatExist(){
     
+
   }
 })
