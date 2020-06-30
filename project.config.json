@@ -30,7 +30,7 @@
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
-	"libVersion": "2.8.1",
+	"libVersion": "2.9.3",
 	"simulatorType": "wechat",
 	"simulatorPluginLibVersion": {},
 	"cloudfunctionTemplateRoot": "cloudfunctionTemplate",

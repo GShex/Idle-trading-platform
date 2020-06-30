@@ -3,7 +3,7 @@
     <!-- display number of people in the room -->
     <view class="left"></view>
     <!-- room name -->
-    <view class="middle">{{groupName}}</view>
+    <!-- <view class="middle">卖家聊天</view> -->
     <!-- reserved -->
     <view class="right"></view>
   </view>

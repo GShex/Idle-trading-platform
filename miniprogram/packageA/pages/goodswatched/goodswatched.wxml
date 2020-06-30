@@ -1,0 +1,28 @@
+
+<view class="no-login" wx:if="{{!logined}}">
+    <view class="c">
+      <text>还没有登录</text>
+      <button plain="true" bindtap="goLogin">去登录</button>
+    </view>
+</view>
+<view class='login' wx:else>
+  <view class="touch-item" catchtap="chat" data-index="{{index}}" wx:for="{{items}}" wx:key="">
+    <view class="goods-item flex-wrp">
+        <view class="avatar flex-item">
+          <image src="{{item.img}}"></image>
+        </view>
+        <view class="goods-content flex-item">
+          <view class="goods-source">
+            <text class="goodsmate">{{item.goodsname}}</text>
+            <text class="status">{{item.price}}</text>
+            
+          </view>
+          <text class="goods-txt">{{item.intro}}</text>
+          
+        </view>
+    </view>
+      
+  </view>
+</view>
+
+

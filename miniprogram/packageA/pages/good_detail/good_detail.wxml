@@ -1,53 +1,45 @@
 
 <view class="container">
-  <view class="swiper-container">
-    <swiper class="swiper_box" indicator-dots="true" indicator-active-color="#fff" autoplay="{{!goodsDetail.basicInfo.videoId}}" circular>
-      <swiper-item wx:for="{{item.imgs}}" wx:key="id" wx:for-item="oneimg">
-        <image src="{{oneimg}}" class="slide-image" mode="aspectFill" lazy-load="true" />
-      </swiper-item>      
-    </swiper>
-  </view>
-  <view class="goods-info">
-    <view class="goods-title">{{item.goodsname}}</view>
-    <view class="goods-profile">
-      <view class="p"><text>¥</text> {{item.price}}</view>
+  <view class="no-show" wx:if="{{!show}}">
+    <view class="c">
+      <text>还没有登录</text>
+      <button plain="true" bindtap="goLogin">去登录</button>
     </view>
   </view>
-  <view class="goods-des-info">
-    <view class="label-title">商品详情</view>
-    <view wx:for="{{item.imgs}}" wx:key="id" wx:for-item="oneimg">
-        <image src="{{oneimg}}" class="image" lazy-load="true" />
+  <view class="show" wx:else>
+    <view class="swiper-container">
+      <swiper class="swiper_box" indicator-dots="true" indicator-active-color="#fff" autoplay="{{!goodsDetail.basicInfo.videoId}}" circular>
+        <swiper-item wx:for="{{item.imgs}}" wx:for-item="oneimg" wx:key="goodsid">
+          <image src="{{oneimg}}" class="slide-image" mode="aspectFill" lazy-load="true" />
+        </swiper-item>      
+      </swiper>
+    </view>
+    <view class="goods-info">
+      <view class="goods-title">{{item.goodsname}}</view>
+      <view class="goods-profile">
+        <view class="p"><text>¥</text> {{item.price}}</view>
       </view>
-    <!-- <view class="goods-text">
-      <parser html="{{goodsDetail.content}}" />
-    </view> -->
+    </view>
+    <view class="goods-des-info">
+      <view class="label-title">商品简介</view>
+      <view class="label-title">{{item.detail}}</view>
+      <!-- <view wx:for="{{item.imgs}}" wx:key="id" wx:for-item="oneimg">
+        <image src="{{oneimg}}" class="image" lazy-load="true" />
+      </view> -->
+      <!-- <view class="goods-text">
+        <parser html="{{goodsDetail.content}}" />
+      </view> -->
+    </view>
+    <view class="rectangle-click-l">
+      <button class="button" bindtap="fav">{{faved?"删除收藏":"收藏商品"}}</button>
+    </view>
+    <view class="rectangle-click-r">
+     <button class="button" bindtap="contact">{{contactName}}</button>
+      <!-- <navigator url='../pages/goodsManage/add/addGoods' >联系卖家</navigator > -->
+    </view>
   </view>
-  <view class="footer-box">
-    <!-- <view class="contact">
-      <button type="primary" open-type="contact" />
-      <image src="../../../static/images/contact.png"></image>
-    </view> -->
+  <!-- <view class="footer-box">
     <image bindtap="addFav" class="fav-icon" src="../../../static/images/fav.png"></image>
     <view class="contact" bindtap="{{contact}}">联系卖家</view>
-  </view>
+  </view> -->
 </view>
-
-<!-- <block wx:if="{{posterShow}}">
-  <view class="poster-mask"></view>
-  <view class="poster">
-    <canvas class="canvas" style="{{canvasstyle}}" canvas-id="firstCanvas"></canvas>
-  </view>
-  <view class="poster-btn">
-    <button type="primary" size="mini" bindtap='_saveToMobile'> 保存图片 </button>
-    <button type="warn" size="mini" bindtap='closePop'> 关闭 </button>
-  </view>
-</block>
-
-<template is="apifmLogin" data="{{wxlogin: wxlogin}}" />
-
-<poster id="poster" config="{{posterConfig}}" bind:success="onPosterSuccess" bind:fail="onPosterFail"></poster>
-<view wx:if="{{showposterImg}}" class="popup-mask"></view>
-<view wx:if="{{showposterImg}}" class="posterImg-box">
-  <image mode="widthFix" class="posterImg" src="{{posterImg}}"></image>
-  <view class="btn-create" bindtap="savePosterPic">保存到相册</view>
-</view> -->

@@ -51,7 +51,45 @@ swiper-item image {
   height: 60rpx;
 }
 
-.contact {
-  align: center;
-  background-color: coral;
+
+.rectangle-click-r{
+  height: 100rpx;
+  width: 250rpx;
+  background-color: #ab956d;
+  border-radius:20rpx;
+  position: fixed;
+  bottom: 50rpx;
+  right: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9;
+}
+/* .rectangle-click-r navigator{
+  font-size: 35rpx;
+  max-width: 200rpx;
+  color: #fff;
+  text-align: center;
+  font-family: serif;
+} */
+
+.rectangle-click-l{
+  height: 100rpx;
+  width: 250rpx;
+  background-color: #ab956d;
+  border-radius:20rpx;
+  position: fixed;
+  bottom: 50rpx;
+  left: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9;
+}
+.button {
+  background-color: #ab956d;
+  font-size: 35rpx;
+  color: #fff;
+  text-align: center;
+  font-family: serif;
 }

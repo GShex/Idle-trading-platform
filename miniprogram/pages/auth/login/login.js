@@ -77,11 +77,11 @@ Page({
             if (res.result) {
               //如果成功获取到
               //将获取到的用户资料写入app.js全局变量
-              console.log(res)
+              console.log("res is ",res)
               app.globalData.logined = true
               app.globalData.userInfo = res.result.data.userData
               app.globalData.userId = res.result.data._id
-              console.log(app.globalData.userId, app.globalData.logined)
+              console.log("登录结果",app.globalData.userId, app.globalData.logined)
               wx.switchTab({
                 url: '/pages/index/index'
               })
@@ -178,9 +178,15 @@ Page({
               if (res.errMsg == "cloud.callFunction:ok" && res.result) {
                 //如果成功获取到
                 //将获取到的用户资料写入app.js全局变量
-                console.log(res)
+                console.log("登录res  ",res)
                 app.globalData.userInfo = res.result.data.userData
                 app.globalData.userId = res.result.data._id
+                ////
+                app.globalData.logined = true
+                ////
+                // console.log(app.globalData.userInfo)
+                console.log("是否登录",app.globalData.logined)
+                // console.log(app.globalData.userId)
                 wx.switchTab({
                   url: '/pages/ucenter/index/index'
                 })

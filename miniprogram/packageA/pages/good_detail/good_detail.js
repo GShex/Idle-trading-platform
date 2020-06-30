@@ -9,19 +9,26 @@ Page({
    */
   data: {
     item: {},
-    id: 0
+    goodsid: 0,
+    show: true,
+    logined: false,
+    faved: false,
+    watched:false,
+    sellerInfo: {},
+    myInfo: {},
+    contactName: '联系卖家'
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (query) {
-    console.log("id is" + query.id)
     this.setData({
-      id: query.id,
+      goodsid: query.goodsid,
+      logined: app.globalData.logined,
       item: {}
     })
-    this.onShow(query.id)
+    // this.onShow(query.id)
   },
 
   /**
@@ -37,32 +44,155 @@ Page({
       });
     this.onShow(); //重新加载onLoad()
   },
-  onShow(id){
+  onShow(){
+    // console.log("onshow hello")
     this.setData({
       item: {},
+      logined: app.globalData.logined
     })
     wx.cloud.callFunction({
       name: 'query_onegood',
       data: {
-        id:id
+        id: this.data.goodsid
       },
       complete: res => {
-        console.log('onshow this is result: ', res)
+        // console.log('onshow this is result: ', re
         this.data.item = {
           goodsname: res.result.data[0].goodsname,
           intro: res.result.data[0].intro,
-          img: res.result.data[0].fileIDs[0],
-          status: "上架中",
           price: res.result.data[0].price,
-          id: res.result.data[0]._id,
-          imgs: res.result.data[0].fileIDs
+          goodsid: res.result.data[0]._id,
+          imgs: res.result.data[0].fileIDs,
+          detail: res.result.data[0].detail,
+          sellerid: res.result.data[0].userid,
+          sellerInfo: res.result.data[0].userInfo
         }
         this.setData({
           item: this.data.item
         });
-        console.log(this.data.item)
+        if(this.data.logined){
+          // console.log(this.data.item)
+          // console.log('SID',this.data.item.sellerid)
+          // console.log('UID',app.globalData.userId)
+          if(this.data.item.sellerid == app.globalData.userId){
+            this.setData({
+              contactName: '我的商品'
+            })
+          }
+        }
+        if(this.data.logined){
+          if(app.globalData.userId != res.result.data[0].userid){
+            wx.cloud.callFunction({
+            name: 'if_fav',
+            data: {
+              userid: app.globalData.userId,
+              goodsid: this.data.goodsid
+            },
+            complete: res=> {
+              console.log("if fav res is ",res)
+              if(res.result.total > 0){
+                wx.cloud.callFunction({
+                  name:'add_history',
+                  data:{
+                    userid: app.globalData.userId,
+                    goodsid: this.data.goodsid,
+                    update:true,
+                    sendTimeTS:Date.now()
+                  },
+                  complete: res=>{
+                    console.log("update time res is ",res)
+                  }
+                })
+              }else{
+                wx.cloud.callFunction({
+                  name:'add_history',
+                  data:{
+                    userid: app.globalData.userId,
+                    goodsid: this.data.goodsid,
+                    update:false,
+                    price:this.data.item.price,
+                    goodsname:this.data.item.goodsname,
+                    intro:this.data.item.intro,
+                    pic:this.data.item.imgs[0],
+                    sendTimeTS:Date.now()
+                  },
+                  complete: res=>{
+                    console.log("create history res is ",res)
+                  }
+                })
+              }
+            }
+          })
+          }
+          
+        }
       }
     })
+    
+    // if(this.data.logined){
+    //   wx.cloud.callFunction({
+    //     name: 'if_fav',
+    //     data: {
+    //       userid: app.globalData.userId,
+    //       goodsid: this.data.goodsid
+    //     },
+    //     complete: res=> {
+    //       console.log("if fav res is ",res)
+    //       if(res.result.total > 0){
+    //         wx.cloud.callFunction({
+    //           name:'add_history',
+    //           data:{
+    //             userid: app.globalData.userId,
+    //             goodsid: this.data.goodsid,
+    //             update:true,
+    //             sendTimeTS:Date.now()
+    //           },
+    //           complete: res=>{
+    //             console.log("update time res is ",res)
+    //           }
+    //         })
+    //       }else{
+    //         wx.cloud.callFunction({
+    //           name:'add_history',
+    //           data:{
+    //             userid: app.globalData.userId,
+    //             goodsid: this.data.goodsid,
+    //             update:false,
+    //             price:this.data.item.price,
+    //             goodsname:this.data.item.goodsname,
+    //             intro:this.data.item.intro,
+    //             pic:this.data.item.imgs[0],
+    //             sendTimeTS:Date.now()
+    //           },
+    //           complete: res=>{
+    //             console.log("create history res is ",res)
+    //           }
+    //         })
+    //       }
+    //     }
+    //   })
+    // }
+    if(this.data.logined){
+      wx.cloud.callFunction({
+        name: 'if_watched',
+        data: {
+          userid: app.globalData.userId,
+          goodsid: this.data.goodsid
+        },
+        complete: res=> {
+          console.log("if fav res is ",res)
+          if(res.result.total > 0){
+            this.setData({
+              faved: true
+            })
+          }else{
+            this.setData({
+              faved: false
+            })
+          }
+        }
+      })
+    }
   },
 
   /**
@@ -83,7 +213,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.onShow()
   },
 
   /**
@@ -98,8 +228,7 @@ Page({
    */
   onShareAppMessage: function () {
 
-<<<<<<< Updated upstream
-=======
+
   },
 
   goLogin:function(){
@@ -202,7 +331,7 @@ Page({
               }
             })
           }
-          console.log(this.data.sellerInfo)
+
           wx.navigateTo({
             url: '../../../pages/chat/chat?id=' 
               + app.globalData.userId + this.data.item.sellerid
@@ -212,12 +341,6 @@ Page({
         }
       })
 
-
-
-
-
-
-      
     }
   },
   getUserInfo(){
@@ -225,6 +348,6 @@ Page({
   },
   ifChatExist(){
     
->>>>>>> Stashed changes
+
   }
 })
