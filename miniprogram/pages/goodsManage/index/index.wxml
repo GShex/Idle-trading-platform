@@ -36,7 +36,8 @@
     </view>
 
     <view class="rectangle-click">
-      <navigator url='/pages/goodsManage/add/addGoods' >发布新商品</navigator >
+      <navigator url='/pages/goodsManage/add/addGoods' bindtap="addgoods">发布新商品</navigator >
+      <!-- <button bindtap="addgoods">发布新商品</button> -->
     </view>
     </view>
   </view>

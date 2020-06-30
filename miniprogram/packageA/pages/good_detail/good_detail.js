@@ -98,5 +98,133 @@ Page({
    */
   onShareAppMessage: function () {
 
+<<<<<<< Updated upstream
+=======
+  },
+
+  goLogin:function(){
+    if (!this.data.logined) {
+      wx.navigateTo({
+        url: "../../../pages/auth/login/login"
+      });
+    }
+  },
+  fav(){
+    console.log("fav invoked")
+    if(!this.data.logined){
+      this.goLogin()
+    }else{
+      console.log(this.data.item.goodsid)
+      console.log(app.globalData.userId)
+      if(!this.data.faved){
+        this.setData({
+          faved: true
+        })
+        console.log("add fav")
+        wx.cloud.callFunction({
+          name: 'add_fav',
+          data: {
+            goodsid: this.data.item.goodsid,
+            goodsname: this.data.item.goodsname,
+            pic: this.data.item.imgs[0],
+            userid: app.globalData.userId
+          },
+          conmplete: res => {
+            console.log('add fav res is ' + res)
+          }
+        })
+      }else{
+        this.setData({
+          faved: false
+        })
+        console.log("del fav")
+        wx.cloud.callFunction({
+          name: 'del_fav',
+          data: {
+            goodsid: this.data.item.goodsid,
+            userid: app.globalData.userId
+          },
+          conmplete: res => {
+            console.log('del fav res is ' + res)
+          }
+        })
+      }
+    }
+  },
+  contact(){
+    if(!this.data.logined){
+      this.goLogin()
+    }else if(this.data.item.sellerid == app.globalData.userId){
+      console.log("这是我自己的商品")
+    }else{
+      console.log("contact 1")
+      console.log(this.data.item.sellerid)
+      // 检查是否已建立聊天，若无则先建立聊天
+      wx.cloud.callFunction({
+        name: 'if_chat',
+        data: {
+          chatid: app.globalData.userId + this.data.item.sellerid,
+          chatterinfor: this.data.item.sellerInfo,
+          fileID: this.data.item.imgs[0],
+          price: this.data.item.price,
+          useeId: this.data.item.sellerid,
+          userId: app.globalData.userId
+        },
+        complete: res=> {
+          if(res.result.total > 0){
+            console.log("聊天已存在")
+          }else{
+            console.log("聊天未存在")
+            wx.cloud.callFunction({
+              name: 'create_chat',
+              data: {
+                chatid: app.globalData.userId + this.data.item.sellerid,
+                chatterinfor: this.data.item.sellerInfo,
+                fileID: this.data.item.imgs[0],
+                price: this.data.item.price,
+                useeId: this.data.item.sellerid,
+                userId: app.globalData.userId
+              },complete: res=> {
+                console.log("create 1 is ",res)
+              }
+            })
+            wx.cloud.callFunction({
+              name: 'create_chat',
+              data: {
+                chatid: app.globalData.userId + this.data.item.sellerid,
+                chatterinfor: app.globalData.userInfo,
+                fileID: this.data.item.imgs[0],
+                price: this.data.item.price,
+                useeId: app.globalData.userId,
+                userId: this.data.item.sellerid
+              },complete: res=> {
+                console.log("create 2 is ",res)
+              }
+            })
+          }
+          console.log(this.data.sellerInfo)
+          wx.navigateTo({
+            url: '../../../pages/chat/chat?id=' 
+              + app.globalData.userId + this.data.item.sellerid
+              + '&name=' + this.data.item.sellerInfo.nickName
+              + '&backgroundimage=""'
+          })
+        }
+      })
+
+
+
+
+
+
+      
+    }
+  },
+  getUserInfo(){
+
+  },
+  ifChatExist(){
+    
+>>>>>>> Stashed changes
   }
 })

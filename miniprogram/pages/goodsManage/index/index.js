@@ -466,7 +466,38 @@ Page({
         url: "/pages/auth/login/login"
       });
     }
-  }
+    
+  },
+
+  // addgoods:function(){
+  //   wx.requestSubscribeMessage({
+  //     tmplIds: ['VCPfNNIhsfO_G1Itx5jmfhZBcNp7uHcNlbeGX0Rbk80'],
+  //     success (res) { }
+  //   })
+  //   // wx.navigateTo({
+  //   //   url: "/pages/goodsManage/add/addGoods"
+  //   // })
+  // }
+
+  addgoods: function() {
+    let that = this;
+    wx.requestSubscribeMessage({
+      tmplIds: ['ixr3VgGcouDzXKSctRY5bMQWLr_y1H9g7_soJFU84N0'],
+      success(res) {
+        console.log(res)
+        that.setData({
+          textcontent: '提示：授权成功'
+        })
+      },
+      fail(res) {
+        console.log(res)
+        that.setData({
+          textcontent: '提示：授权失败'
+        })
+      }
+    })
+  },
+
 
   })
   
