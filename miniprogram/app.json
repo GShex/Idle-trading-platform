@@ -22,7 +22,8 @@
         "pages/goodspage/goodspage",
         "pages/favorate/favorate",
         "pages/good_detail/good_detail",
-        "pages/goodswatched/goodswatched"
+        "pages/goodswatched/goodswatched",
+        "pages/searchResult/searchResult"
 
       ]
     }
