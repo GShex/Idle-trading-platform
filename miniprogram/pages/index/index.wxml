@@ -12,7 +12,7 @@
   <view class="a-section a-topic" wx:if="topics.length > 0" hidden="{{topics.length <= 0}}">
     <view class="h">
       <view>
-        <text class="txt">为你推荐</text>
+        <text class="txt"></text>
       </view>
     </view>
   </view>
