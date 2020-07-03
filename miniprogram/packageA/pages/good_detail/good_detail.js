@@ -315,7 +315,7 @@ Page({
 
           wx.navigateTo({
             url: '../../../pages/chat/chat?id=' 
-              + app.globalData.userId + this.data.item.sellerid
+              + app.globalData.userId + this.data.item.sellerid+this.data.item.goodsid
               + '&name=' + this.data.item.sellerInfo.nickName
               + '&backgroundimage=""'
           })
