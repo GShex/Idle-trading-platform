@@ -73,11 +73,11 @@
     </view>
 
     <view class="message-sender" wx:if="{{!userInfo}}">
-      <button 
+      <!-- <button 
         open-type="getUserInfo" 
         bindgetuserinfo="onGetUserInfo"
         class="userinfo"
-      >请先登录后参与聊天</button>
+      >请先登录后参与聊天</button> -->
     </view>
   </view>
 
