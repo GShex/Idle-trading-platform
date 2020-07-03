@@ -22,7 +22,8 @@ exports.main = async (event, context) => {
           userid: event.userid,
           userInfo:event.userinfo,
           status:true,
-          type:event.FormData.goodType
+          type:event.FormData.goodType,
+          _openid:wxContext.OPENID
         }
       })
     } catch (e) {

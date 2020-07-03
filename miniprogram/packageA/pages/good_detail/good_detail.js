@@ -258,7 +258,7 @@ Page({
       wx.cloud.callFunction({
         name: 'if_chat',
         data: {
-          chatid: app.globalData.userId + this.data.item.sellerid,
+          chatid: app.globalData.userId + this.data.item.sellerid+this.data.item.goodsid,
           chatterinfor: this.data.item.sellerInfo,
           fileID: this.data.item.imgs[0],
           price: this.data.item.price,
@@ -273,7 +273,7 @@ Page({
             wx.cloud.callFunction({
               name: 'create_chat',
               data: {
-                chatid: app.globalData.userId + this.data.item.sellerid,
+                chatid: app.globalData.userId + this.data.item.sellerid+this.data.item.goodsid,
                 chatterinfor: this.data.item.sellerInfo,
                 fileID: this.data.item.imgs[0],
                 price: this.data.item.price,
