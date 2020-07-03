@@ -286,7 +286,7 @@ Page({
             wx.cloud.callFunction({
               name: 'create_chat',
               data: {
-                chatid: app.globalData.userId + this.data.item.sellerid,
+                chatid: app.globalData.userId + this.data.item.sellerid+this.data.item.goodsid,
                 chatterinfor: app.globalData.userInfo,
                 fileID: this.data.item.imgs[0],
                 price: this.data.item.price,
