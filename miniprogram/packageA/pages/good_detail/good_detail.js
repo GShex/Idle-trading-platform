@@ -79,6 +79,54 @@ Page({
             })
           }
         }
+<<<<<<< Updated upstream
+=======
+        if(this.data.logined){
+          if(app.globalData.userId != res.result.data[0].userid){
+            wx.cloud.callFunction({
+            name: 'if_fav',
+            data: {
+              userid: app.globalData.userId,
+              goodsid: this.data.goodsid
+            },
+            complete: res=> {
+              console.log("if fav res is ",res)
+              if(res.result.total > 0){
+                wx.cloud.callFunction({
+                  name:'add_history',
+                  data:{
+                    userid: app.globalData.userId,
+                    goodsid: this.data.goodsid,
+                    update:true,
+                    sendTimeTS:Date.now()
+                  },
+                  complete: res=>{
+                    console.log("update time res is ",res)
+                  }
+                })
+              }else{
+                wx.cloud.callFunction({
+                  name:'add_history',
+                  data:{
+                    userid: app.globalData.userId,
+                    goodsid: this.data.goodsid,
+                    update:false,
+                    price:this.data.item.price,
+                    goodsname:this.data.item.goodsname,
+                    intro:this.data.item.intro,
+                    pic:this.data.item.imgs[0],
+                    sendTimeTS:Date.now()
+                  },
+                  complete: res=>{
+                    console.log("create history res is ",res)
+                  }
+                })
+              }
+            }
+          })
+          }
+        }
+>>>>>>> Stashed changes
       }
     })
     if(this.data.logined){
