@@ -92,7 +92,7 @@ page {
 
 .user_column {
   /* border: 1px solid black; */
-  height: 300rpx;
+  height: 500rpx;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -100,7 +100,7 @@ page {
 
 .user_column_item {
   width: 50%;
-  height: 300rpx;
+  height: 500rpx;
   background: #fff;
   text-align: center;
   position: relative;
