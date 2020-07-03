@@ -84,7 +84,7 @@ Page({
             this.data.chaters.push({
   
               //isTouchMove: false, //默认隐藏删除
-              chattername: res.result.data[i].chatterinfor.nickname,
+              chattername: res.result.data[i].chatterinfor.nickName,
               price: res.result.data[i].price,
               img: res.result.data[i].fileID,
               avatar:res.result.data[i].chatterinfor.avatarUrl,

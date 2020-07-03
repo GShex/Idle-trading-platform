@@ -1,0 +1,46 @@
+<view class='forms'>
+  <form bindsubmit='getForm'>
+    <view class='getform'>
+      <view>商品名:
+        <input type='text' name='goodsname' placeholder='请输入商品名称'/>
+      </view>
+      <view>商品价格:
+        <input type='number' name='price' placeholder='请输入商品价格'></input>
+      </view>
+      <view>商品简介:
+        <input type='text' name='intro' maxlength="20"  placeholder='请输入20字以内的商品简介'></input>
+      </view>
+      <view>商品详情:
+        <input type='text' name='detail' maxlength="200"  placeholder='请输入200字以内的商品详情'></input>
+      </view>
+       <!--选择器-->
+      <view class="section">
+        <view class="section__title">商品类别</view>
+        <picker bindchange="chooseGoodsType" value="{{index}}" range="{{array}}">
+          <view class="picker">
+            当前选择：{{array[index]}}
+          </view>
+        </picker>
+      </view>
+    
+
+
+    </view>
+    
+    <view class="btn-area">
+        <van-button type="warning" bindtap='uploadImgHandle'>上传图片</van-button>
+        <view>
+          <block wx:for="{{tempImg}}" wx:key="{{index}}tmpimg">
+            <image src='{{item}}' mode='aspectFill'></image>
+          </block>
+        </view>
+      
+
+
+       <button formType="submit">Submit</button>
+
+    </view>
+  </form>
+
+  
+</view>

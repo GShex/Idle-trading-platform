@@ -1,6 +1,7 @@
 // miniprogram/packageA/pages/good_detail/good_detail.js
 const app = getApp();
 const db = wx.cloud.database();
+var util = require('../../../utils/utils.js');
 
 Page({
 
@@ -13,6 +14,7 @@ Page({
     show: true,
     logined: false,
     faved: false,
+    watched:false,
     sellerInfo: {},
     myInfo: {},
     contactName: '联系卖家'
@@ -64,7 +66,8 @@ Page({
           imgs: res.result.data[0].fileIDs,
           detail: res.result.data[0].detail,
           sellerid: res.result.data[0].userid,
-          sellerInfo: res.result.data[0].userInfo
+          sellerInfo: res.result.data[0].userInfo,
+          _openid: res.result.data[0]._openid
         }
         this.setData({
           item: this.data.item
@@ -79,18 +82,20 @@ Page({
             })
           }
         }
-<<<<<<< Updated upstream
-=======
+
         if(this.data.logined){
           if(app.globalData.userId != res.result.data[0].userid){
             wx.cloud.callFunction({
-            name: 'if_fav',
+            name: 'if_watched',
+
             data: {
               userid: app.globalData.userId,
               goodsid: this.data.goodsid
             },
             complete: res=> {
-              console.log("if fav res is ",res)
+
+              console.log("if watched res is ",res)
+
               if(res.result.total > 0){
                 wx.cloud.callFunction({
                   name:'add_history',
@@ -125,13 +130,17 @@ Page({
             }
           })
           }
+
+          
         }
->>>>>>> Stashed changes
+
       }
     })
+    
+   
     if(this.data.logined){
       wx.cloud.callFunction({
-        name: 'if_fav',
+        name: 'if_faved',
         data: {
           userid: app.globalData.userId,
           goodsid: this.data.goodsid
@@ -184,6 +193,7 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
+
 
   },
 
@@ -287,6 +297,7 @@ Page({
               }
             })
           }
+
           wx.navigateTo({
             url: '../../../pages/chat/chat?id=' 
               + app.globalData.userId + this.data.item.sellerid
@@ -295,6 +306,21 @@ Page({
           })
         }
       })
+      console.log("333333333333333333333333333333333333333333")
+      console.log(this.data.item._openid)
+      var time = util.formatTime(new Date(), 'Y/M/D h:m:s');
+      wx.cloud.callFunction({
+        name: 'sendnotice',
+        data: {
+          openid: this.data.item._openid,
+          dynamic: "有人看上了你的商品哦",
+          content: this.data.item.goodsname,
+          user: "有人看上了你的商品哦",
+          time: time
+        },
+        complete: res => {}
+    })
+
     }
   },
   getUserInfo(){
@@ -302,5 +328,22 @@ Page({
   },
   ifChatExist(){
     
+
   }
 })
+
+
+// touser: event.openid,
+// page: 'index',
+// data: {
+//   thing1: {
+//     value: event.dynamic
+//   },
+//   thing2: {
+//     value: event.content
+//   },
+//   thing3: {
+//     value: event.user
+//   },
+//   time4: {
+//     value: event.time

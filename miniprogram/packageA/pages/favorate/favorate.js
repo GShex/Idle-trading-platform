@@ -6,6 +6,7 @@ const db = wx.cloud.database();
 Page({
   data: {
   items: [],
+
   index: 0
   },
   onLoad: function (options) {
@@ -61,6 +62,7 @@ Page({
       items: this.data.items
     })
   }
+
 })
 //   async goodsFavList() {
 //     // 搜索商品

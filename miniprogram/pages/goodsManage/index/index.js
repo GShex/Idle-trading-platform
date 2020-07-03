@@ -64,12 +64,15 @@ Page({
             }
             this.data.items.push({
   
-            isTouchMove: false, //默认隐藏删除
-            goodsname: res.result.data[i].goodsname,
-            intro: res.result.data[i].intro,
-            img: res.result.data[i].fileIDs[0],
-            status: state,
-            id: res.result.data[i]._id
+              isTouchMove: false, //默认隐藏删除
+              goodsname: res.result.data[i].goodsname,
+              intro: res.result.data[i].intro,
+              detail: res.result.data[i].detail,
+              price:res.result.data[i].price,
+              fileIDs:res.result.data[i].fileIDs,
+              img: res.result.data[i].fileIDs[0],
+              status: state,
+              id: res.result.data[i]._id
             })
   
             // this.setData({
@@ -89,6 +92,9 @@ Page({
               isTouchMove: false, //默认隐藏删除
               goodsname: res.result.data[i].goodsname,
               intro: res.result.data[i].intro,
+              detail: res.result.data[i].detail,
+              price:res.result.data[i].price,
+              fileIDs:res.result.data[i].fileIDs,
               img: res.result.data[i].fileIDs[0],
               status: state,
               id: res.result.data[i]._id
@@ -107,6 +113,7 @@ Page({
             
             
             });
+            console.log('items',this.data.items)
   
   
         },
@@ -236,59 +243,70 @@ Page({
   del: function (e) {
   
     var i = e.currentTarget.dataset.index
-  
-    db.collection('goods').doc(this.data.items[i].id).remove().then(res=>{
-      console.log(i)
-    })
-   this.data.items.splice(i, 1)
-   this.setData({
-  
-    items: this.data.items
-  
-   })
+    wx.cloud.callFunction({
+      name: 'add_goods',
+      data: {
+        userid:app.globalData.userId,
+        goodsid: this.data.items[i].id,
+        add:false,
+        modify:false,
+        offshelf:false,
+        onshelf:false,
+        del:true
+      },
+      complete: res => {
+        console.log("res",res)
+      }
+      })
+      this.onShow()
   
   },
   onshelf: function (e) {
     
     var i = e.currentTarget.dataset.index
-    db.collection('goods').doc(this.data.items[i].id).update({
-  		data:{
-  			status:true,
-    	}
-   	}).then(res=>{
-    	console.log(i)
-   	})
-     this.setData({
-  
-      items: []
-      
+    wx.cloud.callFunction({
+      name: 'add_goods',
+      data: {
+        userid:app.globalData.userId,
+        goodsid: this.data.items[i].id,
+        add:false,
+        modify:false,
+        offshelf:false,
+        onshelf:true,
+        del:false
+      },
+      complete: res => {
+        console.log("res",res)
+      }
       })
-      this.onLoad()
+      this.onShow()
     
   },
   offshelf: function (e) {
   
     var i = e.currentTarget.dataset.index
-    db.collection('goods').doc(this.data.items[i].id).update({
-      data:{
-        status:false,
+    wx.cloud.callFunction({
+      name: 'add_goods',
+      data: {
+        userid:app.globalData.userId,
+        goodsid: this.data.items[i].id,
+        add:false,
+        modify:false,
+        offshelf:true,
+        del:false
+      },
+      complete: res => {
+        console.log("res",res)
       }
-      }).then(res=>{
-      console.log(i)
       })
-      this.setData({
-  
-      items: []
-      
-      })
-      this.onLoad()
+      this.onShow()
     
   },
   modify:function(e){
     var i = e.currentTarget.dataset.index
     wx.navigateTo({
-      //url: "/pages/goodsManage/modify/modify?id="+this.data.items[i].id+"&goodsname="+this.data.items[i].goodsname+"&price"+this.data.items[i].price+"&intro="+this.data.items[i].intro+"&detail="+this.data.items[i].detail+"&type="+this.data.items[i].type+"&fileIDs="+this.data.items[i].fileIDs
-      url: "/pages/goodsManage/modify/modify?id="+this.data.items[i].id
+      url: "/pages/goodsManage/modify/modify?id="+this.data.items[i].id+"&goodsname="+this.data.items[i].goodsname+"&price="+this.data.items[i].price+"&intro="+this.data.items[i].intro+"&detail="+this.data.items[i].detail+"&fileIDs="+this.data.items[i].fileIDs
+    //  url: "/pages/goodsManage/modify/modify?id="+this.data.items[i].id
     });
   },
   goLogin:function(){
@@ -297,7 +315,38 @@ Page({
         url: "/pages/auth/login/login"
       });
     }
-  }
+    
+  },
+
+  // addgoods:function(){
+  //   wx.requestSubscribeMessage({
+  //     tmplIds: ['VCPfNNIhsfO_G1Itx5jmfhZBcNp7uHcNlbeGX0Rbk80'],
+  //     success (res) { }
+  //   })
+  //   // wx.navigateTo({
+  //   //   url: "/pages/goodsManage/add/addGoods"
+  //   // })
+  // }
+
+  addgoods: function() {
+    let that = this;
+    wx.requestSubscribeMessage({
+      tmplIds: ['ixr3VgGcouDzXKSctRY5bMQWLr_y1H9g7_soJFU84N0'],
+      success(res) {
+        console.log(res)
+        that.setData({
+          textcontent: '提示：授权成功'
+        })
+      },
+      fail(res) {
+        console.log(res)
+        that.setData({
+          textcontent: '提示：授权失败'
+        })
+      }
+    })
+  },
+
 
   })
   

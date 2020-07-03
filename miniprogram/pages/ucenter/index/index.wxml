@@ -9,7 +9,7 @@
   <view class='separate'></view>
 
 
-  <view class='user_column'>
+  <!-- <view class='user_column'>
     <view class='user_column_item' bindtap='goSold' data-index='1' data-route='/pages/ucenter/order/order'>
       <text class="user_column_item_badge" wx:if="{{order.unpaid != 0}}">{{order.unpaid}}</text>
       <image class='user_column_item_image' src='/static/images/aftersale.png'>
@@ -20,7 +20,7 @@
       <image class='user_column_item_image' src='/static/images/pendpay.png'></image>
       <view class='user_column_item_text'>我买入的</view>
     </view>
-  </view>
+  </view> -->
 
   <view class='user_column'>
     <view class='user_column_item' bindtap='goCollect'>
