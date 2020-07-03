@@ -1,6 +1,6 @@
 <!--miniprogram/pages/goodsManage/index.wxml-->
 
-<view class="container">
+
  <view class="no-login" wx:if="{{!logined}}">
     <view class="c">
       <text>还没有登录</text>
@@ -8,6 +8,7 @@
     </view>
   </view>
   <view class='login' wx:else>
+  <view class="container">
     <view class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}" bindtouchstart="touchstart" bindtouchmove="touchmove" wx:for="{{items}}" wx:key="">
 
 

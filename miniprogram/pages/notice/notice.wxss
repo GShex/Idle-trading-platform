@@ -103,3 +103,44 @@
   font-size: 26rpx;
   line-height: 34rpx;
 }
+.no-login {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+  color: #a78845;
+}
+
+.no-login .c {
+  width: 100%;
+  height: auto;
+  margin-top: 200rpx;
+  color: #a78845;
+}
+
+.no-login .c image {
+  margin: 0 auto;
+  display: block;
+  text-align: center;
+  width: 258rpx;
+  height: 258rpx;
+  color: #a78845;
+}
+
+.no-login .c text {
+  margin: 0 auto;
+  display: block;
+  width: 258rpx;
+  height: 59rpx;
+  line-height: 29rpx;
+  text-align: center;
+  font-size: 40rpx;
+  color: #a78845;
+}
+
+.no-login button {
+  width: 60%;
+  margin: 0 auto;
+  color: #a78845;
+  /* background-color: #FFF; */
+  border-color: #a78845;
+}
