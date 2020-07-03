@@ -15,7 +15,7 @@
         <view class="goods-content flex-item">
           <view class="goods-source">
             <text class="goodsmate">{{item.goodsname}}</text>
-            <text class="status">{{item.price}}</text>
+            <text class="status"><text>￥</text>{{item.price}}</text>
             
           </view>
           <text class="goods-txt">{{item.intro}}</text>

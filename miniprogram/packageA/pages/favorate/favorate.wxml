@@ -2,9 +2,9 @@
    <!-- <text class="goodsmate">{{item.goodsName}}</text> -->
 
     <view class="list2" data-index="{{index}}" wx:for="{{items}}" wx:key="id">
-      <navigator url="/pages/goods-details/index?id={{item.goodsId}}"><image class="img" mode="aspectFill" src="{{item.pic}}"></image></navigator>
+      <navigator url="../good_detail/good_detail?goodsid={{item.goodsId}}"><image class="img" mode="aspectFill" src="{{item.pic}}"></image></navigator>
       <view class="goods-info">
-        <navigator url="/pages/goods-details/index?id={{item.goodsId}}"><view class="title ellipsis">{{item.goodsName}}</view></navigator>
+        <navigator url="../good_detail/good_detail?goodsid={{item.goodsId}}"><view class="title ellipsis">{{item.goodsName}}</view></navigator>
         <image class="delete-btn" src="/images/icon/delete.svg" data-index="{{index}}" data-id="{{item.goodsId}}" bindtap="removeFav"></image>
 
       </view>

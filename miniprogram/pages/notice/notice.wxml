@@ -14,7 +14,7 @@
       <view class="chat-content flex-item">
         <view class="chat-source">
           <text class="chatmate">{{item.chattername}}</text>
-          <text class="lasttime">{{item.price}}</text>
+          <text class="lasttime"><text>￥</text>{{item.price}}</text>
           
         </view>
         <!-- <text class="chat-txt">那就成交</text> -->
