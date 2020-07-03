@@ -51,7 +51,7 @@ exports.main = async (event, context) => {
       console.error(e)//输出错误信息
     }
   }else if(event.offshelf == true){
-    return await db.collection('goods').where({
+    await db.collection('goods').where({
       userid: event.userid,
       _id: event.goodsid,
     }).update({
@@ -61,6 +61,16 @@ exports.main = async (event, context) => {
       }).then(res=>{
       console.log(res)
       })
+      await db.collection('watchedgoods').where({
+        goodsid: event.goodsid,
+      }).remove().then(res=>{
+        console.log(res)
+        })
+      return await db.collection('favorate').where({
+        goodsid: event.goodsid,
+      }).remove().then(res=>{
+        console.log(res)
+        })
       
   }else if(event.onshelf == true){
     return await db.collection('goods').where({
@@ -75,12 +85,22 @@ exports.main = async (event, context) => {
       })
       
   }else if(event.del == true){
-    return await db.collection('goods').where({
+     await db.collection('goods').where({
       userid: event.userid,
       _id: event.goodsid,
     }).remove().then(res=>{
       console.log(res)
       })
+      await db.collection('watchedgoods').where({
+        goodsid: event.goodsid,
+      }).remove().then(res=>{
+        console.log(res)
+        })
+      return await db.collection('favorate').where({
+        goodsid: event.goodsid,
+      }).remove().then(res=>{
+        console.log(res)
+        })
       
   }
   
