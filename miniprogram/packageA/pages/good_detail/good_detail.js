@@ -134,7 +134,7 @@ Page({
    
     if(this.data.logined){
       wx.cloud.callFunction({
-        name: 'if_watched',
+        name: 'if_faved',
         data: {
           userid: app.globalData.userId,
           goodsid: this.data.goodsid

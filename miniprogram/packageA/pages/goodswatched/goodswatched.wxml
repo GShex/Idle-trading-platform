@@ -6,7 +6,7 @@
     </view>
 </view>
 <view class='login' wx:else>
-  <view class="touch-item" catchtap="chat" data-index="{{index}}" wx:for="{{items}}" wx:key="">
+  <view class="touch-item" catchtap="showdetail" data-index="{{index}}" wx:for="{{items}}" wx:key="">
     <view class="goods-item flex-wrp">
         <view class="avatar flex-item">
           <image src="{{item.img}}"></image>
