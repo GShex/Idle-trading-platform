@@ -1,3 +1,4 @@
+
 const app = getApp();
 const db = wx.cloud.database();
 const _ = db.command;
@@ -329,3 +330,4 @@ Page({
   //       wx.switchTab({
   //         url: '/pages/index/index'
   //       })
+

@@ -100,7 +100,7 @@ Page({
     })
   },
   goSearch(){
-    console.log(this.data.inputVal)
+    console.log(this.data.inputVal,'gosearch')
     wx.navigateTo({
       // url: '/pages/goods/list?name=' + this.data.inputVal,
       url: '../../packageA/pages/searchResult/searchResult?key=' + this.data.inputVal,
@@ -110,7 +110,7 @@ Page({
     this.setData({
       inputVal: e.detail.value
     })
-    console.log(this.data.inputVal)
+    console.log(this.data.inputVal,'confirm')
     wx.navigateTo({
       url: '../../packageA/pages/searchResult/searchResult?key=' + this.data.inputVal,
     })

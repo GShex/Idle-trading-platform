@@ -82,16 +82,20 @@ Page({
             })
           }
         }
+
         if(this.data.logined){
           if(app.globalData.userId != res.result.data[0].userid){
             wx.cloud.callFunction({
             name: 'if_watched',
+
             data: {
               userid: app.globalData.userId,
               goodsid: this.data.goodsid
             },
             complete: res=> {
+
               console.log("if watched res is ",res)
+
               if(res.result.total > 0){
                 wx.cloud.callFunction({
                   name:'add_history',
@@ -126,8 +130,10 @@ Page({
             }
           })
           }
+
           
         }
+
       }
     })
     

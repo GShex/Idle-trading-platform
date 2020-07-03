@@ -6,66 +6,61 @@ const db = wx.cloud.database();
 Page({
   data: {
   items: [],
+
+  index: 0
   },
   onLoad: function (options) {
+    this.setData({
+      items: [],
+      index: 0
+    })
   },
   onShow: function () {
-    // AUTH.checkHasLogined().then(isLogined => {
-    //   this.setData({
-    //     wxlogin: isLogined
-    //   })
-    //   if (isLogined) {
-    //     this.goodsFavList()
-    //   }
-    // })
-    
-
-
-  wx.cloud.callFunction({
-  name: 'getfavorate',
-  data: {
-    userid:app.globalData.userId
-  },
-  complete: res => {
-    console.log("here!")
-    console.log(res)
-    for (var i = 0; i < res.result.data.length; i++) {
-
-      this.data.items.push({
-        goodsName: res.result.data[i].goodsname,
-        goodsId: res.result.data[i].goodsid,
-        pic: res.result.data[i].pic
+    this.setData({
+      items: []
+    })
+    wx.cloud.callFunction({
+    name: 'getfavorate',
+    data: {
+      userid:app.globalData.userId
+    },
+    complete: res => {
+      console.log("here!")
+      console.log(res)
+      for (var i = 0; i < res.result.data.length; i++) {
+        this.data.items.push({
+          goodsName: res.result.data[i].goodsname,
+          goodsId: res.result.data[i].goodsid,
+          pic: res.result.data[i].pic
+        })
+      }
+      this.setData({
+        items: this.data.items
       })
-    }
+    },
+  })
+  },
+  onPullDownRefresh: function () {
+    this.onShow()
+  },
+  removeFav(e){
+    var idx = e.currentTarget.dataset.index
+    console.log(idx)
+    console.log(this.data.items[idx].goodsName)
+    wx.cloud.callFunction({
+      name: 'del_fav',
+      data: {
+        goodsid: this.data.items[idx].goodsId,
+        userid: app.globalData.userId
+      },
+      conmplete: res => {
+        console.log('del fav res is ' + res)
+      }
+    })
+    this.data.items.splice(idx,1)
     this.setData({
       items: this.data.items
     })
-
-  },
-})
-
-  //  console.log(app.globalData.userId)
-  //  console.log('this is result: ', res)
-  //   for (var i = 0; i < res.result.data.length; i++) {
-  //     var state = "上架中"
-  //     if(res.result.data[i].status != true)
-  //     {
-  //       //state = "已下架"
-  //       continue
-  //     }
-  //     this.data.items.push({
-
-  //     isTouchMove: false, //默认隐藏删除
-  //     goodsname: res.result.data[i].goodsname,
-  //     intro: res.result.data[i].intro,
-  //     img: res.result.data[i].fileIDs[0],
-  //     status: state,
-  //     id: res.result.data[i]._id
-  //     })
-  //   }
-
-
-
   }
 
 })
