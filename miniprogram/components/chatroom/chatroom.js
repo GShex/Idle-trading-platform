@@ -541,6 +541,7 @@ Component({
                 await this.db.collection(collection).add({
                   data: {
                     ...doc,
+                    _userid: this.data.userId,
                     imgFileID: res.fileID,
                   },
                 })
