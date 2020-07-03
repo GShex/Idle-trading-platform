@@ -17,12 +17,12 @@
     <view class="goods-info">
       <view class="goods-title">{{item.goodsname}}</view>
       <view class="goods-profile">
-        <view class="p"><text>¥</text> {{item.price}}</view>
+        <view class="p"><text class="p2" >¥</text> {{item.price}}</view>
       </view>
     </view>
     <view class="goods-des-info">
       <view class="label-title">商品简介</view>
-      <view class="label-title">{{item.detail}}</view>
+      <view class="goods-content"><PRE></PRE> {{item.detail}}</view>
       <!-- <view wx:for="{{item.imgs}}" wx:key="id" wx:for-item="oneimg">
         <image src="{{oneimg}}" class="image" lazy-load="true" />
       </view> -->

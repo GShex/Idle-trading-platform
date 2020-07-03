@@ -2,7 +2,7 @@
 page {
   height: 100%;
   width: 100%;
-  background: #f4f4f4;
+  background: #fff;
 }
 
 .container {
@@ -90,9 +90,17 @@ page {
   margin-right: 30rpx;
 }
 
-.user_column {
+.user_column1 {
   /* border: 1px solid black; */
   height: 500rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user_column2 {
+  /* border: 1px solid black; */
+  height: 200rpx;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -118,9 +126,9 @@ page {
 }
 
 .user_column_item_image {
-  width: 100rpx;
-  height: 100rpx;
-  margin-top: 80rpx;
+  width: 150rpx;
+  height: 150rpx;
+  margin-top: 50rpx;
 }
 
 .user_column_item_text {

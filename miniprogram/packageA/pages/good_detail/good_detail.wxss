@@ -1,6 +1,6 @@
 /* miniprogram/packageA/pages/good_detail/good_detail.wxss */
 .container {
-  background-color: #F2f2f2;
+  background-color: #FFF;
   min-height: 100%;
   padding-bottom: 100rpx;
 }
@@ -92,4 +92,30 @@ swiper-item image {
   color: #fff;
   text-align: center;
   font-family: serif;
+}
+
+.label-title {
+  background-color: #ffffff;
+  text-align: center;
+  font-size: 50rpx;
+}
+
+.goods-content {
+  background-color: #fff;
+  text-align: center;
+  left: 50rpx;
+  right: 50rpx;
+  position: fixed;
+
+}
+
+.goods-title {
+  font-size: 50rpx;
+}
+.p2{
+  color:red;
+}
+
+.p {
+  font-size: 50rpx;
 }
