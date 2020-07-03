@@ -296,6 +296,21 @@ Page({
                 console.log("create 2 is ",res)
               }
             })
+
+            console.log("333333333333333333333333333333333333333333")
+            console.log(this.data.item._openid)
+            var time = util.formatTime(new Date(), 'Y/M/D h:m:s');
+            wx.cloud.callFunction({
+              name: 'sendnotice',
+              data: {
+                openid: this.data.item._openid,
+                dynamic: "有人看上了你的商品哦",
+                content: this.data.item.goodsname,
+                user: "有人看上了你的商品哦",
+                time: time
+              },
+              complete: res => {}
+          })
           }
 
           wx.navigateTo({
@@ -306,20 +321,20 @@ Page({
           })
         }
       })
-      console.log("333333333333333333333333333333333333333333")
-      console.log(this.data.item._openid)
-      var time = util.formatTime(new Date(), 'Y/M/D h:m:s');
-      wx.cloud.callFunction({
-        name: 'sendnotice',
-        data: {
-          openid: this.data.item._openid,
-          dynamic: "有人看上了你的商品哦",
-          content: this.data.item.goodsname,
-          user: "有人看上了你的商品哦",
-          time: time
-        },
-        complete: res => {}
-    })
+      // console.log("333333333333333333333333333333333333333333")
+      // console.log(this.data.item._openid)
+      // var time = util.formatTime(new Date(), 'Y/M/D h:m:s');
+    //   wx.cloud.callFunction({
+    //     name: 'sendnotice',
+    //     data: {
+    //       openid: this.data.item._openid,
+    //       dynamic: "有人看上了你的商品哦",
+    //       content: this.data.item.goodsname,
+    //       user: "有人看上了你的商品哦",
+    //       time: time
+    //     },
+    //     complete: res => {}
+    // })
 
     }
   },
